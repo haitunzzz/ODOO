@@ -48,8 +48,8 @@ for line in open(r'vg_stock.csv','r').readlines():
 
 
 
-url = 'http://erp.mactrends.com:6162'
-a = {'jsonrpc':'2.0','method':'call','params':{'db':dbname,'login':'admin_hk','password':'jmf1750hk','base_location':url},'id':'r7'}
+url = 'http://:6162'
+a = {'jsonrpc':'2.0','method':'call','params':{'db':dbname,'login':'','password':'','base_location':url},'id':'r7'}
 r = requests.post(url+'/web/session/authenticate', data=json.dumps(a))
 auinfo = json.loads(r.text)
 headers = r.headers
