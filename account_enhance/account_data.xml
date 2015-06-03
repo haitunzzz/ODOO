@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record model="account.refund.reason" id="account_refund_reason_1">
+            <field name="name">10 day money back guarantee</field>
+        </record>
+
+        <record model="account.refund.reason" id="account_refund_reason_2">
+            <field name="name">Warranty Claim</field>
+        </record>
+
+        <record model="account.refund.reason" id="account_refund_reason_3">
+            <field name="name">Freight Claim (Item Damaged)</field>
+        </record>
+
+        <record model="account.refund.reason" id="account_refund_reason_4">
+            <field name="name">Freight Claim (Item Lost)</field>
+        </record>
+
+        <record model="account.refund.reason" id="account_refund_reason_5">
+            <field name="name">Freight Damage due to own faults</field>
+        </record>
+
+        <record model="account.refund.reason" id="account_refund_reason_6">
+            <field name="name">Change of Mind</field>
+        </record>
+
+        <record model="account.refund.reason" id="account_refund_reason_7">
+            <field name="name">Wrong item shipped</field>
+        </record>
+
+        <record model="account.refund.reason" id="account_refund_reason_8">
+            <field name="name">Out of Stock</field>
+        </record>
+
+        <record model="account.refund.reason" id="account_refund_reason_9">
+            <field name="name">Customer Service Issue</field>
+        </record>
+
+    <!-- Issue323 -->
+        <record model="ir.cron" id="import_invoice_supplier">
+          <field name="name">Payment Due Date</field>
+          <field name="interval_number">1</field>
+          <field name="interval_type">days</field>
+          <field name="numbercall">-1</field>
+          <field name="doall" eval="False"/>
+          <field name="model" eval="'account.invoice'"/>
+          <field name="function" eval="'duedate_urgent'"/>
+          <field name="args" eval="'()'" />
+        </record>
+    </data>
+
+</openerp>

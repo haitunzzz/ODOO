@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <!-- Helpdesk Support Tree View  -->
+
+        <record model="ir.ui.view" id="crm_case_tree_view_helpdesk_inh">
+            <field name="name">CRM - Helpdesk Support Tree</field>
+            <field name="model">crm.helpdesk</field>
+            <field name="inherit_id" ref="crm_helpdesk.crm_case_tree_view_helpdesk"/>
+            <field name="arch" type="xml">
+                <field name="name" position="replace">
+                </field>
+                <field name="partner_id" position="after">
+                    <field name="ref"/>
+                    <!--field name="name" string="Query" options='{"charlength": 80}' style="width:80px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"/-->
+                    <field name="name" string="Query"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="company_heldesk">
+            <field name="name">res.company.form.inherit</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="crm_claim_mactrends.view_company_inherit_form"/>
+            <field name="arch" type="xml">
+                <field name="replyto_email" position="after">
+                    <field name="helpdesk_email"/>
+                </field>
+            </field>
+        </record>
+    
+    </data>
+</openerp>

@@ -1,0 +1,460 @@
+# Translation of hxERP - Humanity and eXcellence ERP.
+# This file contains the translation of the following modules:
+#	* product_attr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hxERP - Humanity and eXcellence ERP 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-21 05:43+0000\n"
+"PO-Revision-Date: 2013-03-21 05:43+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_attr
+#: field:product.with.stock,category_id:0
+msgid "Category"
+msgstr ""
+
+#. module: product_attr
+#: model:ir.actions.act_window,name:product_attr.action_product_items
+#: model:ir.ui.menu,name:product_attr.menu_purchase_product_items
+#: model:ir.ui.menu,name:product_attr.menu_sale_product_items
+#: model:ir.ui.menu,name:product_attr.menu_stock_product_items
+#: view:product.item:0
+#: field:product.product,hx_product_item_ids:0
+msgid "Product Items"
+msgstr ""
+
+#. module: product_attr
+#: selection:product.item,new_type:0
+#: selection:product.product,hx_new_type:0
+msgid "Second-hand A"
+msgstr ""
+
+#. module: product_attr
+#: field:product.product,hx_material:0
+#: field:product.with.stock,product_material:0
+msgid "Material"
+msgstr ""
+
+#. module: product_attr
+#: model:ir.ui.menu,name:product_attr.menu_purchase_product_brand
+#: model:ir.ui.menu,name:product_attr.menu_sale_product_brand
+#: model:ir.ui.menu,name:product_attr.menu_stock_product_brand
+msgid "Brand Management"
+msgstr ""
+
+#. module: product_attr
+#: view:product.with.stock:0
+msgid "Confirm"
+msgstr ""
+
+#. module: product_attr
+#: field:product.brand,logo:0
+msgid "Logo File"
+msgstr ""
+
+#. module: product_attr
+#: model:ir.ui.menu,name:product_attr.menu_purchase_product_productsize
+#: model:ir.ui.menu,name:product_attr.menu_sale_product_productsize
+#: model:ir.ui.menu,name:product_attr.menu_stock_product_productsize
+msgid "Size Management"
+msgstr ""
+
+#. module: product_attr
+#: help:product.sizetype,description:0
+msgid "The description of size type."
+msgstr ""
+
+#. module: product_attr
+#: view:product.product:0
+msgid "Without Image"
+msgstr ""
+
+#. module: product_attr
+#: model:ir.ui.menu,name:product_attr.menu_pos_product_with_stock
+#: model:ir.ui.menu,name:product_attr.menu_purchase_product_with_stock
+#: model:ir.ui.menu,name:product_attr.menu_sale_product_with_stock
+#: model:ir.ui.menu,name:product_attr.menu_stock_product_with_stock
+msgid "Stock Products"
+msgstr ""
+
+#. module: product_attr
+#: field:product.with.stock,way_get:0
+msgid "Way"
+msgstr ""
+
+#. module: product_attr
+#: selection:product.item,new_type:0
+#: selection:product.product,hx_new_type:0
+msgid "Second-hand New"
+msgstr ""
+
+#. module: product_attr
+#: field:product.with.stock,warehouse_id:0
+msgid "Warehouse"
+msgstr ""
+
+#. module: product_attr
+#: selection:product.item,new_type:0
+#: selection:product.product,hx_new_type:0
+msgid "New"
+msgstr ""
+
+#. module: product_attr
+#: view:product.product:0
+msgid "Items"
+msgstr ""
+
+#. module: product_attr
+#: help:product.product,hx_product_item_ids:0
+msgid "Items of product in stock."
+msgstr ""
+
+#. module: product_attr
+#: field:product.item,status:0
+msgid "Status"
+msgstr ""
+
+#. module: product_attr
+#: field:product.product,hx_price_eu:0
+msgid "Europe Price"
+msgstr ""
+
+#. module: product_attr
+#: model:ir.model,name:product_attr.model_product_product
+#: view:product.item:0
+#: field:product.item,product_id:0
+#: view:product.product:0
+msgid "Product"
+msgstr ""
+
+#. module: product_attr
+#: help:product.product,hx_product_brand_id:0
+msgid "Select a brand for this product"
+msgstr ""
+
+#. module: product_attr
+#: view:product.brand:0
+#: field:product.brand,description:0
+#: field:product.size,description:0
+#: field:product.sizetype,description:0
+msgid "Description"
+msgstr ""
+
+#. module: product_attr
+#: field:product.brand,name:0
+msgid "Brand Name"
+msgstr ""
+
+#. module: product_attr
+#: selection:product.with.stock,way_get:0
+msgid "Normal"
+msgstr ""
+
+#. module: product_attr
+#: model:ir.actions.act_window,name:product_attr.action_product_brand
+#: view:product.product:0
+#: field:product.product,hx_product_brand_id:0
+#: field:product.with.stock,product_brand_id:0
+msgid "Brand"
+msgstr ""
+
+#. module: product_attr
+#: view:product.product:0
+msgid "HongKong Price:"
+msgstr ""
+
+#. module: product_attr
+#: field:product.product,hx_origin:0
+msgid "Origin Country"
+msgstr ""
+
+#. module: product_attr
+#: field:product.brand,headquarter:0
+msgid "Head Quarter"
+msgstr ""
+
+#. module: product_attr
+#: field:product.product,hx_year_season:0
+msgid "Year Season"
+msgstr ""
+
+#. module: product_attr
+#: code:addons/product_attr/wizard/product_with_stock.py:94
+#, python-format
+msgid "Products Stock"
+msgstr ""
+
+#. module: product_attr
+#: field:product.item,auuid:0
+msgid "Aux-UUID"
+msgstr ""
+
+#. module: product_attr
+#: sql_constraint:product.brand:0
+msgid "The reference must be unique"
+msgstr ""
+
+#. module: product_attr
+#: view:product.brand:0
+#: field:product.brand,story:0
+msgid "Brand Story"
+msgstr ""
+
+#. module: product_attr
+#: view:product.product:0
+msgid "China Price:"
+msgstr ""
+
+#. module: product_attr
+#: selection:product.with.stock,way_get:0
+msgid "Weekly"
+msgstr ""
+
+#. module: product_attr
+#: model:ir.model,name:product_attr.model_product_sizetype
+#: field:product.size,sizetype_id:0
+#: field:product.sizetype,name:0
+msgid "Product Size Type"
+msgstr ""
+
+#. module: product_attr
+#: view:product.item:0
+#: field:product.item,iid:0
+msgid "Item id"
+msgstr ""
+
+#. module: product_attr
+#: model:ir.model,name:product_attr.model_product_brand
+#: view:product.brand:0
+msgid "product.brand"
+msgstr ""
+
+#. module: product_attr
+#: sql_constraint:product.item:0
+msgid "The iid must be unique"
+msgstr ""
+
+#. module: product_attr
+#: view:product.item:0
+msgid "Auxiliary"
+msgstr ""
+
+#. module: product_attr
+#: selection:product.item,status:0
+msgid "returned to supplier"
+msgstr ""
+
+#. module: product_attr
+#: field:product.product,hx_gender:0
+msgid "Gender"
+msgstr ""
+
+#. module: product_attr
+#: field:product.item,note:0
+msgid "Notes"
+msgstr ""
+
+#. module: product_attr
+#: help:product.sizetype,name:0
+msgid "The name of the Product Size Type."
+msgstr ""
+
+#. module: product_attr
+#: selection:product.with.stock,way_get:0
+msgid "New Ahead(Slow)"
+msgstr ""
+
+#. module: product_attr
+#: field:product.item,purchase_order_id:0
+msgid "Purchase Order"
+msgstr ""
+
+#. module: product_attr
+#: field:product.product,hx_price_cn:0
+msgid "China Price"
+msgstr ""
+
+#. module: product_attr
+#: sql_constraint:product.size:0
+msgid "The name of the size with same type must be unique !"
+msgstr ""
+
+#. module: product_attr
+#: selection:product.item,status:0
+msgid "item in the stock"
+msgstr ""
+
+#. module: product_attr
+#: selection:product.item,new_type:0
+#: selection:product.product,hx_new_type:0
+msgid "Second-hand Like New"
+msgstr ""
+
+#. module: product_attr
+#: model:ir.model,name:product_attr.model_product_item
+#: view:product.item:0
+msgid "product.item"
+msgstr ""
+
+#. module: product_attr
+#: field:product.product,hx_model:0
+#: field:product.with.stock,product_model:0
+msgid "Model"
+msgstr ""
+
+#. module: product_attr
+#: selection:product.product,hx_gender:0
+msgid "Male"
+msgstr ""
+
+#. module: product_attr
+#: field:product.item,uuid:0
+msgid "UUID"
+msgstr ""
+
+#. module: product_attr
+#: model:ir.model,name:product_attr.model_product_size
+#: field:product.item,size:0
+#: field:product.product,hx_product_size:0
+#: field:product.size,name:0
+msgid "Product Size"
+msgstr ""
+
+#. module: product_attr
+#: field:product.item,write_date:0
+msgid "Update Date"
+msgstr ""
+
+#. module: product_attr
+#: view:product.with.stock:0
+msgid "Product Stock"
+msgstr ""
+
+#. module: product_attr
+#: sql_constraint:product.sizetype:0
+msgid "The name of the size type must be unique !"
+msgstr ""
+
+#. module: product_attr
+#: field:product.product,hx_price_hk:0
+msgid "Hongkong Price"
+msgstr ""
+
+#. module: product_attr
+#: model:ir.actions.act_window,name:product_attr.action_view_products_with_stock
+msgid "Products with Stock"
+msgstr ""
+
+#. module: product_attr
+#: field:product.brand,reference:0
+#: field:product.with.stock,product_ref:0
+msgid "Reference"
+msgstr ""
+
+#. module: product_attr
+#: field:product.item,new_type:0
+#: field:product.product,hx_new_type:0
+msgid "New/Secondhand Type"
+msgstr ""
+
+#. module: product_attr
+#: code:addons/product_attr/product.py:44
+#: code:addons/product_attr/product.py:47
+#, python-format
+msgid "Auto Generating name must have brand!"
+msgstr ""
+
+#. module: product_attr
+#: model:ir.actions.act_window,name:product_attr.product_size_action
+#: view:product.size:0
+msgid "ProductSize"
+msgstr ""
+
+#. module: product_attr
+#: selection:product.item,new_type:0
+#: selection:product.product,hx_new_type:0
+msgid "Second-hand C"
+msgstr ""
+
+#. module: product_attr
+#: model:ir.model,name:product_attr.model_product_with_stock
+msgid "Product With Stock"
+msgstr ""
+
+#. module: product_attr
+#: field:product.item,stock_location_id:0
+msgid "Stock Location"
+msgstr ""
+
+#. module: product_attr
+#: view:product.item:0
+#: selection:product.product,hx_gender:0
+msgid "General"
+msgstr ""
+
+#. module: product_attr
+#: view:product.product:0
+msgid "Europe Price:"
+msgstr ""
+
+#. module: product_attr
+#: field:product.product,hx_color:0
+#: field:product.with.stock,product_color:0
+msgid "Color"
+msgstr ""
+
+#. module: product_attr
+#: sql_constraint:product.product:0
+msgid "The brand_model_material_color must be unique"
+msgstr ""
+
+#. module: product_attr
+#: field:product.item,create_date:0
+msgid "Create Date"
+msgstr ""
+
+#. module: product_attr
+#: code:addons/product_attr/product.py:44
+#: code:addons/product_attr/product.py:47
+#, python-format
+msgid "Warning!"
+msgstr ""
+
+#. module: product_attr
+#: selection:product.product,hx_gender:0
+msgid "Female"
+msgstr ""
+
+#. module: product_attr
+#: field:product.brand,partner_id:0
+msgid "partner"
+msgstr ""
+
+#. module: product_attr
+#: field:product.with.stock,product_size_id:0
+msgid "Size"
+msgstr ""
+
+#. module: product_attr
+#: selection:product.item,new_type:0
+#: selection:product.product,hx_new_type:0
+msgid "Second-hand B"
+msgstr ""
+
+#. module: product_attr
+#: selection:product.item,status:0
+msgid "item is sold"
+msgstr ""
+
+#. module: product_attr
+#: help:product.brand,partner_id:0
+msgid "Select a partner for this brand if it exist"
+msgstr ""
+

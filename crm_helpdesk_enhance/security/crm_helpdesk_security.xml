@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+
+    <!-- Issue312
+         from:ZhangXue-->
+    <record id="crm_helpdesk_comp_rule" model="ir.rule">
+        <field name="name">CRM Helpdesk multi company rule</field>
+        <field model="ir.model" name="model_id" ref="crm_helpdesk.model_crm_helpdesk"/>
+        <field eval="True" name="global"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+    </record>
+
+
+</data>
+</openerp>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--Stock Pickings-->
+        <record id="deliver_stock_picking_view" model="ir.ui.view">
+            <field name="name">Batch Complete Transfer</field>
+            <field name="model">stock.picking.deliver</field>
+            <field name="arch" type="xml">
+                <form string="Deliver Pickings" version="7.0">
+                    <separator string="Deliver Pickings"/>
+                    <label string="All selected stock pickings will be deliverd or received. It means these pickings are done!"/>
+                    <footer>
+                        <button string="Approve" name="deliver_pickings" type="object" default_focus="1" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_deliver_stock_picking" model="ir.actions.act_window">
+            <field name="name">Batch Complete Transfer</field>
+            <field name="res_model">stock.picking.deliver</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="deliver_stock_picking_view"/>
+            <field name="target">new</field>
+            <field name="help">Deliver Stock Picking Selected</field>
+        </record>
+
+        <record model="ir.values" id="receive_stock_picking_internal">
+            <field name="model_id" ref="stock.model_stock_picking" />
+            <field name="name">Batch Complete Transfer</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_deliver_stock_picking'))" />
+            <field name="key">action</field>
+            <field name="model">stock.picking</field>
+        </record>
+
+        <!-- Issue297 -->
+        <record model="ir.values" id="deliver_stock_picking_out">
+            <field name="model_id" ref="stock.model_stock_picking_out" />
+            <field name="name">Batch Complete Transfer</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_deliver_stock_picking'))" />
+            <field name="key">action</field>
+            <field name="model">stock.picking.out</field>
+        </record>
+
+    </data>
+</openerp>

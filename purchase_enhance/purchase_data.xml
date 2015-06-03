@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="target_nz" model="purchase.target">
+            <field name="name">New Zealand</field>
+        </record>
+        <record id="target_au" model="purchase.target">
+            <field name="name">Australia</field>
+        </record>
+        <record id="target_uk" model="purchase.target">
+            <field name="name">United Kingdom</field>
+        </record>
+    </data>
+</openerp>

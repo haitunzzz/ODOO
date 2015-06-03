@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<openerp>
+  <data noupdate="1">
+  
+      <!--Template created for email notification to responsible user-->      
+        
+      <record id="email_template_purchase_confirm" model="email.template">
+          <field name="name">PO - Confirm</field>
+          <field name="subject">${object.name} has been confirmed</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="purchase.model_purchase_order"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">purchase@mactrends.com</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>${object.name} has been confirmed </p> <br/>
+
+</div>
+            ]]></field>
+      </record>
+
+      <!-- Issue217 -->
+      <record id="email_template_requisition_user" model="email.template">
+          <field name="name">Purchase Requisition User</field>
+          <field name="subject">New product proposal [${object.name}] had been submitted by [${object.partner_id.name}] - [${object.pro_description}]</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="model_purchase_requisition"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to"></field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>New product proposal [${object.name}] had been submitted by [${object.partner_id.name}] - [${object.pro_description}] </p> <br/>
+    <p>${object.company_id.current_date}</p>
+
+</div>
+            ]]></field>
+      </record>
+
+      <!-- Issue282 -->
+      <record id="email_template_purchase_warn" model="email.template">
+          <field name="name">Purchase Warning</field>
+          <field name="subject">New PO # ${object.name} has been lodged, Date ${object.company_id.current_date}</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="model_purchase_order"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to"></field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>PO Warning / Checkpoint: </p> <br/>
+    <p>${object.warn}</p>
+
+</div>
+            ]]></field>
+      </record>
+
+    </data>
+</openerp>

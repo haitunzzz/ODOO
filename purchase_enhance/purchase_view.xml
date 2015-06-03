@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <record id="purchase_order_form_inherit_security" model="ir.ui.view">
+            <field name="name">purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase_landed_costs.c2c_purchase_order_landed_cost_view"/>
+            <field name="arch" type="xml">
+                <button name="purchase_confirm" states="draft"  position="replace">
+                    <button name="purchase_confirm" states="draft" string="Confirm Order" groups="purchase.group_purchase_manager"/>
+                </button>
+                <button name="purchase_confirm" states="sent"  position="replace">
+                    <button name="purchase_confirm" states="sent" string="Confirm Order" class="oe_highlight" groups="purchase.group_purchase_manager"/>
+                </button>
+                <field name="landed_costs" position="after">
+                    <field name="standard_price" />
+                <!-- Issue322 -->
+                    <field name="target_selling" groups="base.group_sale_manager,account.group_account_manager"/>
+                    <field name="target_margin" groups="base.group_sale_manager,account.group_account_manager"/>
+                    <field name="total_margin" groups="base.group_sale_manager,account.group_account_manager"/>
+                </field> 
+                <field name="product_qty" position="after">
+                    <field name="volume_per_pallet" />
+                </field> 
+                <xpath expr="//group[@class='oe_subtotal_footer oe_right']" position="after">
+                    <group name="pallet_length">
+                        <field name="pallet_length" groups="base.group_user"/>
+                    </group>
+                </xpath>
+                <field name="company_id" position="after">
+                    <field name="container" />
+                </field> 
+                <!-- Issue228 -->
+                <page string="Incoming Shipments &amp; Invoices" position="inside">
+                    <group string="PO Delivery Records">
+                        <group>
+                            <field name="cost_estimated"/>
+                            <field name="cost_damage"/>
+                        </group>
+                        <group>
+                            <field name="date_delivery"/>
+                            <field name="cost_actual"/>
+                        </group>
+                    </group>
+                </page>
+                <notebook position="inside">
+                    <!-- Issue282 -->
+                    <page string="QC Memo">
+                        <field name="warn" />
+                        <button name="action_send_warnemail" type="object" string="Send to QC  Manager"/>
+                    </page>
+                </notebook>
+
+
+            </field>        
+        </record>
+
+        <record id="purchase_order_tree_inh" model="ir.ui.view">
+            <field name="name">purchase.order.tree</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+            <field name="arch" type="xml">
+                <field name="origin" position="before">
+                    <field name="partner_ref" />
+                </field> 
+            </field>        
+        </record>
+
+    </data>
+</openerp>

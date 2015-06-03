@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="1">
+
+    <!-- Issue271 -->
+    <record id="group_stock_journal" model="res.groups">
+        <field name="name">Stock Journal</field>
+        <field name="category_id" ref="base.module_category_accounting_and_finance"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    </data>
+</openerp>
+

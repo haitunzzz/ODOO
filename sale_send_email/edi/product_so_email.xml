@@ -1,0 +1,185 @@
+<?xml version="1.0" ?>
+<openerp>
+  <data noupdate="1">
+  
+      <!--Template created for email notification to responsible user-->      
+        
+      <record id="email_template_product_so1" model="email.template">
+          <field name="name">Product - AU ORF SKU</field>
+          <field name="subject">Buyers must read before you use your products - [${object.name}] - Topchoice Online</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="sale.model_sale_order"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">${object.partner_id.email}</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Dear Custome</p>
+
+    <p>Thank you for purchasing the Verano® Rattan Furniture Set from us</p>
+
+    <p>As you might have noticed, its a quite bulky and heavy item. In order to get your item delivered safely, we will need someone at home to receive the product and sign off the consignment. Please leave a time frame, e.g. Friday 10am - 2pm for the driver to drop off the item. Extra charge will be applied for second delivery</p>
+
+    <p>Please also remember to check the carton when receive the item, once you sign off the paper, freight company won’t take any responsibility on damage or lost. If you authorize us to leave the item somewhere when no one’s home, topchoice ore carrier won’t take any responsibility on damage or lost</p>
+
+    <p>Thank you and may you receive the item and enjoy it soon.</p>
+
+    <p>Kind regards</p>
+    <p>Topchoice Online Ltd</p>
+
+</div>
+            ]]></field>
+      </record>
+
+      <record id="email_template_product_so2" model="email.template">
+          <field name="name">Product - AU OTP SKU</field>
+          <field name="subject">Buyers must read before you use your products - [${object.name}] - Topchoice Online</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="sale.model_sale_order"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">${object.partner_id.email}</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Dear Custome</p>
+
+    <p>Thank you for purchasing the Trampoline from us</p>
+
+    <p>As you might have noticed, its a quite heavy item. In order to get your item delivered safely, we will need someone at home to receive the product and sign off the consignment. Please leave a time frame, e.g. Friday 10am - 2pm for the driver to drop off the item. Extra charge will be applied for second delivery</p>
+
+    <p>The carrier we use is a common freight company, the freight price does not include insurance, and the carrier or topchoice will not take responsibility on items lost or damage during transit. However, our contracted carrier is quite reliable, very few issues happened since we have used them</p>
+
+    <p>Please also remember to check the carton when receive the item, once you sign off the paper, freight company won’t take any responsibility on damage. If you authorize us to leave the item somewhere when no one’s home, topchoice won’t take any responsibility on damage or lost</p>
+
+    <p>Please open the boxes and double check to see if everything is there. If there is any faulty or missing component we can send the replacements to you right away. Do NOT wait till the last minute.</p>
+
+    <p>You can follow the video installation to double check</p>
+    <p>AirMaster trampoline:</p>
+    <p>http://youtu.be/FpnR-Fv1CB</p>
+    <p>http://www.eshop-solutions.com/downloads/am_trampoline_v102.pd</p>
+
+    <p>Skydancer trampoline (we have upgraded the Skydancer trampoline, and please refer the Airmaster video for net attaching part)</p>
+    <p>http://youtu.be/gh6Bhy3_UF</p>
+    <p>www.eshop-solutions.com/downloads/sd_trampoline_ Instructionv104.pd</p>
+
+
+
+    <p>Thank you and may you receive the item and enjoy it soon.</p>
+
+    <p>Kind regards</p>
+    <p>Topchoice Online Ltd</p>
+
+</div>
+            ]]></field>
+      </record>
+
+
+      <record id="email_template_product_so3" model="email.template">
+          <field name="name">Product - NZ OGS SKU</field>
+          <field name="subject">Buyers must read before you use your products - [${object.name}] - Topchoice Online</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="sale.model_sale_order"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">${object.partner_id.email}</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Dear Custome</p>
+
+    <p>Thank you for purchasing the Verano® garden shed from us</p>
+
+    <p>As you might have noticed, its a quite bulky and heavy item. In order to get your item delivered safely, we will need someone at home to receive the product and sign off the consignment.  If you authorize us to leave the item somewhere when no one’s home, topchoice won’t take any responsibility on damage or lost. We will put your phone number on the order, and will advise carrier to ring before delivery, but ideally please leave a time frame for the driver to drop off the item, e.g. we will be home in the afternoon from 1pm - 5pm.</p>
+
+    <p>During peak season, please do understand as all freight carriers are flat out, and occasionally delivery might have some delay. We will try our best to solve the problem if unluckily issue happens</p>
+
+    <p>Please also remember to check the carton when receive the item, once you sign off the paper and do not note damage on the consignment, freight company won’t take any responsibility on damage or lost</p>
+
+    <p>Thank you and may you receive the item and enjoy it soon.</p>
+
+    <p>Kind regards</p>
+    <p>Topchoice Online Ltd</p>
+
+</div>
+            ]]></field>
+      </record>
+
+
+      <record id="email_template_product_so4" model="email.template">
+          <field name="name">Product - NZ ORF SKU</field>
+          <field name="subject">Buyers must read before you use your products - [${object.name}] - Topchoice Online</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="sale.model_sale_order"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">${object.partner_id.email}</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Dear Custome</p>
+
+    <p>Thank you for purchasing the Verano® Rattan Furniture Set from us</p>
+
+    <p>As you might have noticed, its a quite bulky and heavy item. In order to get your item delivered safely, we will need someone at home to receive the prodcut and sign off the consignment.  If you authorize us to leave the item somewhere when no one’s home, topchoice won’t take any responsibility on damage or lost. We will put your phone number on the order, and will advise carrier to ring before delivery, but ideally please leave a time frame for the driver to drop off the item, e.g. we will be home in the afternoon from 1pm - 5pm.</p>
+
+    <p>During peak season, please do understand as all freight carriers are flat out, and occassionally have some delay. We will try our best to solve the problem if unluckily issue happens</p>
+
+    <p>Please also remember to check the carton when receive the item, once you sign off the paper and do not note damage on the consignment, freight company won’t take any responsibility on damage or lost</p>
+
+    <p>Thank you and may you receive the item and enjoy it soon.</p>
+
+    <p>Kind regards</p>
+    <p>Topchoice Online Ltd</p>
+
+
+</div>
+            ]]></field>
+      </record>
+
+
+      <record id="email_template_product_so5" model="email.template">
+          <field name="name">Product - NZ OTP SKU</field>
+          <field name="subject">Buyers must read before you use your products - [${object.name}] - Topchoice Online</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="sale.model_sale_order"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">${object.partner_id.email}</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Dear Custome</p>
+
+    <p>Thank you for purchasing the trampoline from us</p>
+
+    <p>As you might have noticed, its a quite heavy item. In order to get your item delivered safely, we will need someone at home to receive the product and sign off the consignment.  If you authorize us to leave the item somewhere when no one’s home, topchoice won’t take any responsibility on damage or lost (of course, we do have quite a few customers doing that as New Zealand is a nice and safe place).</p>
+
+    <p>We will put your phone number on the order, and will advise carrier to ring before delivery, but ideally please leave a time frame for the driver to drop off the item, e.g. we will be home in the afternoon from 1pm - 5pm.</p>
+
+    <p>During peak season, please do understand as all freight carriers are flat out, and occasionally have some delay. We will try our best to solve the problem if unluckily issue happens</p>
+
+    <p>Please also remember to check the carton when receive the item, once you sign off the paper and do not note damage on the consignment, freight company won’t take any responsibility on damage</p>
+
+    <p>In case, if you find the size of the trampoline is not suitable, please contact us immediately for swapping option. We will only accept return of the item in original layout, carton, and re-sellable condition. Additional freight will be charged for return or re-delivery.</p>
+
+    <p>You can follow the video installation to double check</p>
+    <p>AirMaster trampoline:</p>
+    <p>http://youtu.be/FpnR-Fv1CB</p>
+    <p>http://www.eshop-solutions.com/downloads/am_trampoline_v102.pd</p>
+
+    <p>Skydancer trampoline</p>
+    <p>http://youtu.be/gh6Bhy3_UF</p>
+    <p>www.eshop-solutions.com/downloads/sd_trampoline_ Instructionv104.pd</p>
+
+
+    <p>Thank you and may you receive the item and enjoy it soon.</p>
+
+
+
+    <p>Kind regards</p>
+    <p>Topchoice Online Ltd</p>
+
+</div>
+            ]]></field>
+      </record>
+
+
+    </data>
+</openerp>

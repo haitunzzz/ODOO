@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_auto_email_so_user,auto_email_so_user,model_auto_email_so,base.group_user,1,0,0,0
+access_auto_email_so_manager,auto_email_so_manager,model_auto_email_so,base.group_sale_manager,1,1,1,1
+access_auto_email_pro_user,auto_email_pro_user,model_auto_email_pro,base.group_user,1,0,0,0
+access_auto_email_pro_manager,auto_email_pro_manager,model_auto_email_pro,base.group_sale_manager,1,1,1,1
+access_auto_email_do_user,auto_email_do_user,model_auto_email_do,base.group_user,1,0,0,0
+access_auto_email_do_manager,auto_email_do_manager,model_auto_email_do,base.group_sale_manager,1,1,1,1
+access_auto_email_int_user,auto_email_int_user,model_auto_email_int,base.group_user,1,0,0,0
+access_auto_email_int_manager,auto_email_int_manager,model_auto_email_int,base.group_sale_manager,1,1,1,1

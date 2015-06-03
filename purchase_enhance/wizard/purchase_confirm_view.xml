@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="action_purchase_confirm" model="ir.actions.act_window">
+            <field name="name">Purchase Confirm</field>
+            <field name="res_model">purchase.confirm</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- this view of stock.partial.picking wizard is dedicated to internal picking. The fields_view_get is ovveridden in order to change the label of the process button and the separator. -->
+        <record id="purchase_confirm_form" model="ir.ui.view">
+            <field name="name">purchase.confirm.form</field>
+            <field name="model">purchase.confirm</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Confirm" version="7.0">
+                    <separator string="Confirm Purchase Order"/>
+                    <label string="You have products with no cost, are you sure you wish to proceed?"/>
+                    <footer>
+                        <button name="do_confirm" string="Confirm" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

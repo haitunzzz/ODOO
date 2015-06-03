@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+    by wgwang kdd.wang@gmail.com
+    http://wgwang.github.com 
+-->
+
+<openerp>
+    <data noupdate="1">
+        <record id="seq_type_product_brand_auto" model="ir.sequence.type">
+            <field name="name">Product Brand</field>
+            <field name="code">product.brand</field>
+        </record>
+        <record id="seq_product_brand_auto" model="ir.sequence">
+            <field name="name">Product Brand</field>
+            <field name="code">product.brand</field>
+            <field name="padding">10</field>
+            <field name="prefix">98</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</openerp>

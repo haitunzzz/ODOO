@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<openerp>
+  <data noupdate="1">
+  
+      <!--Template created for email notification to responsible user-->      
+        
+      <record id="email_template_int_daily" model="email.template">
+          <field name="name">INT - Daily INT CSV</field>
+          <field name="subject">Daily INT report [${object.name}] [${object.company_id.current_date}]</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="stock.model_stock_warehouse"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">${object.email}</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello,</p> <br/>
+    <p> Hi, please find attachment for dispatch order generated on [${object.company_id.current_date}] 
+
+</div>
+            ]]></field>
+      </record>
+    </data>
+
+
+  <data noupdate="0">
+      <record id="email_template_int_daily_null" model="email.template">
+          <field name="name">INT - Daily INT CSV(NULL)</field>
+          <field name="subject">Daily INT report [${object.name}] [${object.company_id.current_date}]</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="stock.model_stock_warehouse"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">${object.email}</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Please ignore this email, there is no order required for this batch. Thanks! 
+
+</div>
+            ]]></field>
+      </record>
+    </data>
+
+</openerp>

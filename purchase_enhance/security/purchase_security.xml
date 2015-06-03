@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+
+    <!-- Purchase Proposal
+         from:ZhangXue-->
+    <!--record id="purchase.group_purchase_proposal" model="res.groups">
+        <field name="name">Purchase Proposal</field>
+        <field name="category_id" ref="base.module_category_purchase_management"/>
+    </record-->
+
+</data>
+</openerp>

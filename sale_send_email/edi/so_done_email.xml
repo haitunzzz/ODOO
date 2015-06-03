@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<openerp>
+  <data noupdate="0">
+  
+      <!--Template created for email notification to responsible user-->      
+        
+      <record id="email_template_all_so_weekly" model="email.template">
+          <field name="name">SO - All Weekly SO CSV</field>
+          <field name="subject">Weekly SO report [${object.current_date}]</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="base.model_res_company"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">m.zhang@mactrends.co.nz</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello,${object.name} </p> <br/>
+    <p> please find "Weekly SO Report" in attachment
+
+</div>
+            ]]></field>
+      </record>
+
+      <record id="email_template_refund_inv_weekly" model="email.template">
+          <field name="name">SO - Refund Weekly SO CSV</field>
+          <field name="subject">Weekly Refund SO Report [${object.current_date}]</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="base.model_res_company"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">m.zhang@mactrends.co.nz</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello,${object.name} </p> <br/>
+    <p> please find "Weekly Refund SO Report" in attachment
+
+</div>
+            ]]></field>
+      </record>
+
+      <record id="email_template_doneso_price_weekly" model="email.template">
+          <field name="name">SO - Product Sales Confirmation Note</field>
+          <field name="subject">Product Sales Confirmation Note - Week ending [${object.current_date}]</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="base.model_res_company"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to"></field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello,${object.name} </p> <br/>
+    <p>func_body
+
+</div>
+            ]]></field>
+      </record>
+
+    </data>
+</openerp>

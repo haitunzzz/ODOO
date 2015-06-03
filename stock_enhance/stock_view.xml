@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <record id="view_picking_out_form_inh" model="ir.ui.view">
+            <field name="name">stock.picking.out.form.inh</field>
+            <field name="model">stock.picking.out</field>
+            <field name="inherit_id" ref="stock.view_picking_out_form"/>
+            <field name="arch" type="xml">
+                <field name="stock_journal_id" position="after">
+                    <field name="auto_email"/>
+                </field>
+                <xpath expr="/form/sheet/h1" position="before">
+                    <div class="oe_right oe_button_box" name="buttons">
+                        <field name="sale_id" invisible="1"/>
+                        <button name="action_view_so" type="object" string="View SO" attrs="{'invisible': [('sale_id','=', False)]}"/>
+                        <button name="action_view_int" type="object" string="View INT" attrs="{'invisible': [('sale_id','=', False)]}"/>
+                        <field name="if_claim" invisible="1"/>
+                        <button name="action_view_claim" type="object" string="View Claim" attrs="{'invisible': [('if_claim','=', False)]}"/>
+                    </div>
+                </xpath>
+            </field>        
+	    </record>
+
+        <record id="view_picking_form_inh" model="ir.ui.view">
+            <field name="name">stock.picking.form.inh</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <button name="draft_force_assign" position="before">
+                    <button name="action_check" states="draft" string="Check Availability" type="object"/>
+                </button>
+                <button name="action_process" position="before">
+                    <button name="action_check" states="confirmed" string="Check Availability" type="object"/>
+                </button>
+                <field name="origin" position="after">
+                    <field name="control"/>
+                    <field name="carrier_id"/>
+                    <field name="carrier_tracking_ref"/>
+                </field>
+                <field name="name" position="after">
+                    <div class="oe_right oe_button_box" name="buttons">
+                        <button name="action_view_so" type="object" string="View SO" attrs="{'invisible': [('sale_id','=', False)]}"/>
+                        <button name="action_view_do" type="object" string="View DO" attrs="{'invisible': [('sale_id','=', False)]}"/>
+                    </div>
+                </field>
+                <!-- Issue271 
+                     -->
+                <field name="stock_journal_id" position="replace">
+                    <field name="stock_journal_id" widget="selection" groups="account.group_account_user,stock_enhance.group_stock_journal"/>
+                </field>
+                <!-- Issue350 -->
+                <page string="Additional Info" position="inside">
+                    <group>
+                        <group>
+                            <field name="is_seconds"/>
+                        </group>
+                        <group>
+                            <field name="seconds"  attrs="{'invisible': [('is_seconds','=', False)]}"/>
+                        </group>
+                    </group>
+                    <group>
+                            <field name="seconds_lines" attrs="{'invisible': [('seconds','!=', 'missing')]}">
+                                <tree string="Seconds Lines" editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="qty"/>
+                                </tree>
+                            </field>
+                    </group>
+                </page>
+            </field>        
+	    </record>
+
+        <record id="picking_quick_form_inh" model="ir.ui.view">
+            <field name="name">stock.picking.form.inh</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock_quick_entry.picking_quick_form"/>
+            <field name="arch" type="xml">
+                <button name="draft_force_assign" position="before">
+                    <button name="action_check" states="draft" string="Check Availability" type="object"/>
+                </button>
+                <button name="action_process" position="before">
+                    <button name="action_check" states="confirmed" string="Check Availability" type="object"/>
+                </button>
+            </field>        
+	    </record>
+
+        <!--record id="view_picking_out_search_new" model="ir.ui.view">
+            <field name="name">stock.picking.out.search.inh</field>
+            <field name="model">stock.picking</field>
+            <field name="arch" type="xml">
+                <search string="Picking list">
+                    <field name="name" string="Picking List" filter_domain="['|',('name','ilike', self),('origin','ilike',self)]"/>
+                    <filter icon="terp-check" name="available" string="Ready" domain="[('state','=','assigned')]" help="Assigned Delivery Orders"/>
+                    <filter icon="terp-camera_test" name="confirmed" string="Waiting" domain="[('state','=','confirmed')]" help="Confirmed Delivery Orders"/>
+                    <filter icon="terp-dialog-close" name="done" string="Done" domain="[('state','=','done')]" help="Delivery orders already processed"/>
+                    <separator/>
+                    <filter icon="terp-accessories-archiver-minus" string="Back Orders" domain="[('backorder_id', '!=', False)]" help="Is a Back Order"/>
+                    <separator/>
+                    <filter icon="terp-dolar" name="to_invoice" string="To Invoice" domain="[('invoice_state','=','2binvoiced')]" help="Delivery orders to invoice"/>
+                    <filter string="Today Created" domain="[('date','>=',time.strftime('%%Y-%%m-%%d 00:00:00'))]" />
+                    <filter string="Today Done" domain="[('date_done','>=',time.strftime('%%Y-%%m-%%d 00:00:00'))]" />
+                    <filter string="Month Done" domain="[('date_done','>=',time.strftime('%%Y-%%m-01 00:00:00'))]" />
+                    <field name="stock_journal_id"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Status" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Order Date" icon="terp-go-month" domain="[]"  context="{'group_by':'date'}"/>
+                        <filter string="Expected Date" icon="terp-go-month" domain="[]"  context="{'group_by':'min_date'}"/>
+                        <filter name="group_by_journal" string="Journal" icon="terp-folder-orange" domain="[]" context="{'group_by':'stock_journal_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record-->
+
+
+        <!--record id="stock.action_picking_tree" model="ir.actions.act_window">
+            <field name="name">Delivery Orders</field>
+            <field name="res_model">stock.picking.out</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="domain">[('type','=','out')]</field>
+            <field name="context">{'contact_display': 'partner_address'}</field>
+            <field name="search_view_id" ref="stock.view_picking_out_search"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a delivery order. 
+              </p><p>
+                This is the list of all delivery orders that have to be
+                prepared, according to your different sales orders and your
+                logistics rules.
+              </p>
+            </field>
+        </record-->
+
+
+        <record id="view_location_tree5" model="ir.ui.view">
+            <field name="name">stock.location.tree</field>
+            <field name="model">stock.location</field>
+            <field name="inherit_id" ref="stock.view_location_tree2"/>
+            <field name="arch" type="xml">
+                <field name="stock_virtual" position="after">
+                    <field name="stock_ats" invisible="'product_id' not in context"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="product_open_stock_location">
+            <field name="name">Check Availability by Warehouse Locations</field>
+            <field name="domain">[('usage','=','internal'),('name','&lt;&gt;','Output'),('name','&lt;&gt;','QC')]</field>
+            <field name="res_model">stock.location</field>
+            <field name="context">{'product_id': active_id}</field>
+            <field name="target">new</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_form_view_location_button">
+            <field name="name">product.product.procurement</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product_cats_inventory.product_cats_inventory_view_product_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='_current_virtual_available']" position="after">
+                    <button string="Check Availability by Warehouse Locations" name="%(product_open_stock_location)d" type="action"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="product_tree_view_inherit_zx" model="ir.ui.view">
+            <field name="name">tree.inherit.product.tree.view</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product_cubic.tree_inherit_product_tree_view" />
+            <field name="arch" type="xml">
+                <field name="volume" position="replace">
+                    <field name="volume_total"/>
+                </field>
+            </field>
+        </record>
+
+        <!--record id="view_product_stock_form" model="ir.ui.view">
+            <field name="name">product.product.stock.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <div name="options" position="inside">
+                    <field name="is_parts"/>
+                    <label for="is_parts"/>
+                </div>
+            </field>
+        </record-->
+
+        <record id="vpicktree_inh" model="ir.ui.view">
+            <field name="name">stock.picking.tree</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.vpicktree"/>
+            <field name="arch" type="xml">
+                <field name="backorder_id" position="after">        
+                    <field name="shipping_method"/>
+                    <field name="estimated_delivery_date"/>
+                </field>
+
+                <field name="min_date" position="replace">        
+                    <field name="is_preorder"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_warehouse_inh" model="ir.ui.view">
+            <field name="name">stock.warehouse</field>
+            <field name="model">stock.warehouse</field>
+            <field name="inherit_id" ref="stock.view_warehouse"/>
+            <field name="arch" type="xml">
+                <field name="company_id" position="before">
+                    <field name="code"/>
+                    <field name="email"/>
+                    <field name="email_active"/>
+                    <field name="cutoff1"/>
+                    <field name="cutoff2"/>
+                    <!-- 
+                    <button name="send_int_csv" type="object" string="test"/>
+                         -->
+                </field>
+            </field>
+        </record>
+
+        <record id="view_warehouse_tree_inh" model="ir.ui.view">
+            <field name="name">stock.warehouse.tree</field>
+            <field name="model">stock.warehouse</field>
+            <field name="inherit_id" ref="stock.view_warehouse_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="code"/>
+                </field>
+            </field>
+        </record>
+
+
+        <record id="view_picking_in_tree_inh" model="ir.ui.view">
+            <field name="name">stock.picking.in.tree</field>
+            <field name="model">stock.picking.in</field>
+            <field name="inherit_id" ref="jmf.view_picking_in_tree_jmf"/>
+            <field name="arch" type="xml">
+                <field name="date" position="replace">
+                    <field name="date" invisible="1"/>
+                </field>
+                <field name="min_date" position="replace">
+                    <field name="partner_ref"/>
+                    <field name="minimum_planned_date"/>
+                    <field name="date_order"/>
+                    <field name="date_done"/>
+                </field>
+                <field name="min_date" position="replace">
+                    <field name="min_date" invisible="1"/>
+                </field>
+                <field name="invoice_state" position="replace">
+                </field>
+            </field>
+        </record>
+
+        <record id="view_picking_in_form_inh" model="ir.ui.view">
+            <field name="name">stock.picking.in.form</field>
+            <field name="model">stock.picking.in</field>
+            <field name="inherit_id" ref="stock.view_picking_in_form"/>
+            <field name="arch" type="xml">
+                <!-- Issue349 -->
+                <field name="auto_picking" position="after">
+                    <field name="claim_id"/>
+                </field>
+                <!-- Issue350 -->
+                <page string="Additional Info" position="inside">
+                    <group>
+                        <group>
+                            <field name="is_seconds"/>
+                        </group>
+                        <group>
+                            <field name="seconds"  attrs="{'invisible': [('is_seconds','=', False)]}"/>
+                        </group>
+                    </group>
+                    <group>
+                            <field name="seconds_lines" attrs="{'invisible': [('seconds','!=', 'missing')]}">
+                                <tree string="Seconds Lines" editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="qty"/>
+                                </tree>
+                            </field>
+                    </group>
+                </page>
+            </field>
+        </record>
+    </data>
+</openerp>

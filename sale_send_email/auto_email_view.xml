@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <menuitem name="Automated Email Notification"
+            id="menu_auto_email" sequence="16"
+            parent="base.menu_base_config" groups="base.group_sale_manager"/>
+
+        <record id="auto_email_so_view_form" model="ir.ui.view">
+            <field name="name">auto.email.so.form</field>
+            <field name="model">auto.email.so</field>
+            <field name="arch" type="xml">
+                <form string="Auto Email" version="7.0">
+                    <group>
+                    <field name="name"/>
+                    <field name="if_sq_notify"/>
+                    <field name="template_sq"/>
+                    <field name="if_prepay_notify"/>
+                    <field name="template_prepay"/>
+                    <field name="if_con_notify"/>
+                    <field name="template_so"/>
+                    <field name="company_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="auto_email_so_view_tree" model="ir.ui.view">
+            <field name="name">auto.email.so.tree</field>
+            <field name="model">auto.email.so</field>
+            <field name="arch" type="xml">
+                <tree string="Auto Email">
+                    <field name="name"/>
+                    <field name="if_sq_notify"/>
+                    <field name="template_sq"/>
+                    <field name="if_prepay_notify"/>
+                    <field name="template_prepay"/>
+                    <field name="if_con_notify"/>
+                    <field name="template_so"/>
+                    <field name="company_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="auto_email_so_act" model="ir.actions.act_window">
+            <field name="name">Sales Orders</field>
+            <field name="res_model">auto.email.so</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="auto_email_so_view_tree"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a auto email template of sale order 
+              </p>
+            </field>
+        </record>
+
+        <menuitem action="auto_email_so_act"
+            id="menu_auto_email_so_act" sequence="1"
+            parent="menu_auto_email" groups="base.group_sale_manager"/>
+
+        <record id="auto_email_do_view_form" model="ir.ui.view">
+            <field name="name">auto.email.do.form</field>
+            <field name="model">auto.email.do</field>
+            <field name="arch" type="xml">
+                <form string="Auto Email" version="7.0">
+                    <group>
+                    <field name="name"/>
+                    <field name="if_notify"/>
+                    <field name="template_notify"/>
+                    <field name="company_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="auto_email_do_view_tree" model="ir.ui.view">
+            <field name="name">auto.email.do.tree</field>
+            <field name="model">auto.email.do</field>
+            <field name="arch" type="xml">
+                <tree string="Auto Email">
+                    <field name="name"/>
+                    <field name="if_notify"/>
+                    <field name="template_notify"/>
+                    <field name="company_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="auto_email_do_act" model="ir.actions.act_window">
+            <field name="name">DO Pickings</field>
+            <field name="res_model">auto.email.do</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="auto_email_do_view_tree"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a auto email template of do 
+              </p>
+            </field>
+        </record>
+
+        <menuitem action="auto_email_do_act"
+            id="menu_auto_email_do_act" sequence="3"
+            parent="menu_auto_email" groups="base.group_sale_manager"/>
+
+        <record id="auto_email_int_view_form" model="ir.ui.view">
+            <field name="name">auto.email.int.form</field>
+            <field name="model">auto.email.int</field>
+            <field name="arch" type="xml">
+                <form string="Auto Email" version="7.0">
+                    <group>
+                    <field name="name"/>
+                    <field name="if_notify"/>
+                    <field name="template_notify"/>
+                    <field name="company_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="auto_email_int_view_tree" model="ir.ui.view">
+            <field name="name">auto.email.int.tree</field>
+            <field name="model">auto.email.int</field>
+            <field name="arch" type="xml">
+                <tree string="Auto Email">
+                    <field name="name"/>
+                    <field name="if_notify"/>
+                    <field name="template_notify"/>
+                    <field name="company_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="auto_email_int_act" model="ir.actions.act_window">
+            <field name="name">INT Pickings</field>
+            <field name="res_model">auto.email.int</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="auto_email_int_view_tree"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a auto email template of int 
+              </p>
+            </field>
+        </record>
+
+        <menuitem action="auto_email_int_act"
+            id="menu_auto_email_int_act" sequence="4"
+            parent="menu_auto_email" groups="base.group_sale_manager"/>
+
+        <record id="auto_email_pro_view_form" model="ir.ui.view">
+            <field name="name">auto.email.pro.form</field>
+            <field name="model">auto.email.pro</field>
+            <field name="arch" type="xml">
+                <form string="Auto Email" version="7.0">
+                    <group>
+                    <field name="name"/>
+                    <field name="is_send_sq"/>
+                    <field name="templates_sq"  widget="many2many_tags"/>
+                    <field name="is_send_so"/>
+                    <field name="templates_so"  widget="many2many_tags"/>
+                    <field name="is_send_do"/>
+                    <field name="templates_do"  widget="many2many_tags"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="auto_email_pro_view_tree" model="ir.ui.view">
+            <field name="name">auto.email.pro.tree</field>
+            <field name="model">auto.email.pro</field>
+            <field name="arch" type="xml">
+                <tree string="Auto Email">
+                    <field name="name"/>
+                    <field name="is_send_sq"/>
+                    <field name="templates_sq"  widget="many2many_tags"/>
+                    <field name="is_send_so"/>
+                    <field name="templates_so"  widget="many2many_tags"/>
+                    <field name="is_send_do"/>
+                    <field name="templates_do"  widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="auto_email_pro_act" model="ir.actions.act_window">
+            <field name="name">Products</field>
+            <field name="res_model">auto.email.pro</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="auto_email_pro_view_tree"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a auto email template of sale order 
+              </p>
+            </field>
+        </record>
+
+        <menuitem action="auto_email_pro_act"
+            id="menu_auto_email_pro_act" sequence="2"
+            parent="menu_auto_email" groups="base.group_sale_manager"/>
+
+        <!-- 
+             -->
+         <record id="view_order_form_email_inh" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="jmf.view_order_form_jmf"/>
+            <field name="arch" type="xml">
+                <field name="estimated_delivery_date" position="after">
+                    <field name="auto_email"/>
+                </field>
+           </field>
+        </record>
+
+		<record id="product_form_email_inherit" model="ir.ui.view">
+			<field name="name">product.form.inherit</field>
+			<field name="model">product.product</field>
+            <field name="inherit_id" ref="product_kits_inventory.product_kits_inventory_view_product_form_inherit" />
+            <field name="arch" type="xml">
+                <div name="ean" position="after">
+                    <field name="auto_email"/>
+			    </div>
+           </field>
+        </record>
+
+        <record id="product_category_form_view_inh" model="ir.ui.view">
+            <field name="name">product.category.form</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_form_view"/>
+            <field name="arch" type="xml">
+                <field name="type" position="after">
+                    <field name="complete_name"/>
+                    <field name="auto_email"/>
+			    </field>
+           </field>
+        </record>
+
+    </data>
+</openerp>

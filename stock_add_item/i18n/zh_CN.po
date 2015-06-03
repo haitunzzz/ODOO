@@ -1,0 +1,102 @@
+# Translation of hxERP - Humanity and eXcellence ERP.
+# This file contains the translation of the following modules:
+#	* stock_add_item
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hxERP - Humanity and eXcellence ERP 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-06-19 08:11+0000\n"
+"PO-Revision-Date: 2013-06-19 08:11+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_add_item
+#: field:pos.order,item_ids:0
+#: field:purchase.order,item_ids:0
+#: field:sale.order,item_ids:0
+#: field:stock.move,item_ids:0
+msgid "Product Items"
+msgstr "Product Items"
+
+#. module: stock_add_item
+#: view:purchase.order:0
+#: view:sale.order:0
+msgid "Product Sale Records"
+msgstr "Product Sale Records"
+
+#. module: stock_add_item
+#: view:sale.order:0
+msgid "Cost Price"
+msgstr "Cost Price"
+
+#. module: stock_add_item
+#: view:stock.picking.in:0
+msgid "Print Product Items"
+msgstr "打印条目"
+
+#. module: stock_add_item
+#: model:ir.model,name:stock_add_item.model_sale_order
+msgid "Sales Order"
+msgstr "销售订单"
+
+#. module: stock_add_item
+#: model:ir.model,name:stock_add_item.model_stock_picking_in
+msgid "Incoming Shipments"
+msgstr "入库"
+
+#. module: stock_add_item
+#: view:sale.order:0
+msgid "Sale Price"
+msgstr "Sale Price"
+
+#. module: stock_add_item
+#: code:addons/stock_add_item/stock.py:393
+#, python-format
+msgid "You have printed product items of Purchase Order"
+msgstr "You have printed product items of Purchase Order"
+
+#. module: stock_add_item
+#: view:sale.order:0
+msgid "Cost Price of Sale Products"
+msgstr "销售成本价"
+
+#. module: stock_add_item
+#: code:addons/stock_add_item/stock.py:372
+#: code:addons/stock_add_item/stock.py:393
+#: code:addons/stock_add_item/stock.py:398
+#, python-format
+msgid "Invalid Action!"
+msgstr "非法操作!"
+
+#. module: stock_add_item
+#: model:ir.model,name:stock_add_item.model_stock_move
+msgid "Stock Move"
+msgstr "库存调拨"
+
+#. module: stock_add_item
+#: model:ir.model,name:stock_add_item.model_purchase_order
+msgid "Purchase Order"
+msgstr "采购订单"
+
+#. module: stock_add_item
+#: view:purchase.order:0
+msgid "Purchase Order Sale Records"
+msgstr "销售情况"
+
+#. module: stock_add_item
+#: code:addons/stock_add_item/stock.py:372
+#: code:addons/stock_add_item/stock.py:398
+#, python-format
+msgid "You can only print product items of Purchase Order"
+msgstr "You can only print product items of Purchase Order"
+
+#. module: stock_add_item
+#: model:ir.model,name:stock_add_item.model_pos_order
+msgid "Point of Sale"
+msgstr "POS"
+

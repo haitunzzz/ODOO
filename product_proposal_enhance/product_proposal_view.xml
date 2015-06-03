@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+    <record model="ir.ui.view" id="view_product_proposal_form">
+        <field name="name">product.proposal.form</field>
+        <field name="model">product.proposal</field>
+        <field name="arch" type="xml">
+            <form string="Product Proposal" version="7.0">
+            <header>
+                <button name="tender_invest" states="draft" string="Start project" type="object" class="oe_highlight"/>
+                <button name="tender_reset" states="done,cancel" string="Reset to Draft" type="object" />
+                <button name="tender_done" states="invest" string="Mark as Completed" type="object" class="oe_highlight"/>
+                <button name="tender_cancel" states="draft,invest" string="Cancel proposal" type="object" />
+                <field name="state" widget="statusbar" statusbar_visible="draft,invest,done" statusbar_colors='{"invest":"blue"}'/>
+            </header>
+            <sheet>
+                <h1>
+                    <field name="name" class="oe_inline"/>
+                </h1>
+                <group>
+                    <group>
+                        <field name="project_name"/>
+                        <!--field name="product_id" widget="many2many_tags"/-->
+                        <field name="budget"/>
+                        <field name="user_id"/>
+                    </group>
+                    <group>
+                        <field name="date"/>
+                        <field name="expected_date"/>
+                    </group>
+                </group>
+                    <field name="product_id"/>
+                    <separator/>
+                    <label for="feature"/>
+                    <div>
+                        <field name="feature"/>
+                    </div>
+                    <separator/>
+                <separator string="ENGINEERING TEAM"/>
+                    <label for="comment_yes"/>
+                    <div>
+                    <field name="comment_yes"/>
+                    </div>
+                    <label for="comment_no"/>
+                    <div>
+                    <field name="comment_no"/>
+                    </div>
+            </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_product_proposal_tree">
+        <field name="name">product.proposal.tree</field>
+        <field name="model">product.proposal</field>
+        <field name="arch" type="xml">
+            <tree colors="grey:state == 'cancel'" string="Product Proposal">
+                <field name="name"/>
+                <field name="project_name"/>
+                <field name="user_id"/>
+                <field name="budget"/>
+                <field name="date"/>
+                <field name="expected_date"/>
+                <field name="state"/>
+            </tree>
+      </field>
+    </record>
+
+    <record id="view_product_proposal_filter" model="ir.ui.view">
+            <field name="name">product.proposal.list.select</field>
+            <field name="model">product.proposal</field>
+            <field name="arch" type="xml">
+                <search string="Search Product Proposal">
+                    <field name="name" string="Product Proposal"/>
+                    <filter icon="terp-document-new" name="draft" string="New" domain="[('state','=','draft')]" help="New Product Proposal"/>
+                    <filter icon="terp-camera_test" string="Investigation" domain="[('state','=','invest')]" help="Product Proposal in vestigation"/>
+                    <filter icon="terp-dialog-close" string="Done" domain="[('state','=','done')]" help="Current Product Proposal"/>
+                    <separator/>
+                    <field name="project_name" />
+                    <group expand="0" string="Group By...">
+                        <filter string="Status" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Date" icon="terp-go-month" domain="[]" context="{'group_by':'date'}"/>
+                        <filter string="Expected Date" icon="terp-go-month" domain="[]" context="{'group_by':'expected_date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+    <record model="ir.actions.act_window" id="action_product_proposal">
+        <field name="name">Feature Proposal</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.proposal</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{"search_default_user_id":uid}</field>
+        <field name="search_view_id" ref="view_product_proposal_filter"/>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to start a new product.proposal process. 
+          </p><p>
+            A product.proposal is the step before a request for quotation.
+            In a product.proposal (or purchase tender), you can record the
+            products you need to buy and trigger the creation of RfQs to
+            suppliers. After the negotiation, once you have reviewed all the
+            supplier's offers, you can validate some and cancel others.
+          </p>
+        </field>
+    </record>
+
+        <!--menuitem name="Purchases"
+            id="base.menu_product_proposal"
+            groups="purchase.group_purchase_manager,purchase.group_purchase_user"
+            sequence="60"/-->
+
+        <menuitem id="menu_product_proposal" name="Product Developments"
+            parent="base.menu_purchase_root" sequence="0" />
+
+    <menuitem
+        id="menu_purchase_product_proposal"
+        sequence="0"
+        parent="menu_product_proposal"
+        action="action_product_proposal"/>
+
+    </data>
+</openerp>

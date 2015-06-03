@@ -1,0 +1,432 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+        <!-- EDI related Email Templates menu -->
+        <record model="ir.actions.act_window" id="action_email_templates">
+            <field name="name">Email Templates</field>
+            <field name="res_model">email.template</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="email_template.email_template_tree" />
+            <field name="search_view_id" ref="email_template.view_email_template_search"/>
+            <field name="context" eval="{'search_default_model_id': ref('sale_send_email.model_sale_order')}"/>
+        </record>
+    </data>
+
+    <!-- Mail template is done in a NOUPDATE block
+         so users can freely customize/delete them -->
+    <data noupdate="1">
+
+        <!--Email template -->
+        <record id="email_template_edi_sale_sq_nz" model="email.template">
+            <field name="name">SQ - Confirmation Notify1 (NZ)</field>
+            <field name="email_from">${'info@topchoice.co.nz'}</field>
+            <field name="email_to">${object.partner_id.email}</field>
+            <field name="email_cc">${''}</field>
+            <field name="subject">(NOREPLY) Notice: Your SO has been confirmed :[${object.name}]</field>
+            <!--field name="email_recipients">${object.user_id.id}</field-->
+            <field name="model_id" ref="sale_send_email.model_sale_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Dear customer ${object.partner_id.name},</p>
+    
+    <p>Thanks for your purchase</p>
+
+    <p>Order Number : ${object.name}</p>
+
+    <p style="border-left: 1px solid #8e0000; margin-left: 30px;">
+       &nbsp;&nbsp;<strong>Contents of your purchase :</strong><br />
+       <br/>
+       % for line in object.order_line:
+           % if line.product_id.name == 'Shipping':
+               &nbsp;&nbsp;Plus:${line.product_id.name}<br />
+           % else:
+               &nbsp;&nbsp;Product name: <strong>${line.product_id.name}</strong><br />
+               &nbsp;&nbsp;Quantity: <strong>${line.product_uom_qty}</strong><br />
+           % endif
+       % endfor
+       <br/>
+       &nbsp;&nbsp;Total: [${object.pricelist_id.currency_id.symbol}${object.amount_total}]<br />
+    </p>
+
+    <br/>
+    <br/>
+    <br/>
+</div>
+            ]]></field>
+        </record>
+
+        <record id="email_template_edi_sale_sq_aus" model="email.template">
+            <field name="name">SQ - Confirmation Notify1 (AUS)</field>
+            <field name="email_from">${'info@topchoice.net.au'}</field>
+            <field name="email_to">${object.partner_id.email}</field>
+            <field name="email_cc">${''}</field>
+            <field name="subject">(NOREPLY) Notice: Your SO has been confirmed :[${object.name}]</field>
+            <!--field name="email_recipients">${object.user_id.id}</field-->
+            <field name="model_id" ref="sale_send_email.model_sale_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Dear customer ${object.partner_id.name},</p>
+    
+    <p>Thanks for your purchase</p>
+
+    <p>Order Number : ${object.name}</p>
+
+    <p style="border-left: 1px solid #8e0000; margin-left: 30px;">
+       &nbsp;&nbsp;<strong>Contents of your purchase :</strong><br />
+       <br/>
+       % for line in object.order_line:
+           % if line.product_id.name == 'Shipping':
+               &nbsp;&nbsp;Plus:${line.product_id.name}<br />
+           % else:
+               &nbsp;&nbsp;Product name: <strong>${line.product_id.name}</strong><br />
+               &nbsp;&nbsp;Quantity: <strong>${line.product_uom_qty}</strong><br />
+           % endif
+       % endfor
+       <br/>
+       &nbsp;&nbsp;Total: [${object.pricelist_id.currency_id.symbol}${object.amount_total}]<br />
+    </p>
+
+    <br/>
+    <br/>
+    <br/>
+</div>
+            ]]></field>
+        </record>
+
+        <record id="email_template_edi_sale_sq_uk" model="email.template">
+            <field name="name">SQ - Confirmation Notify1 (UK)</field>
+            <field name="email_from">${'info@topchoice.co.uk'}</field>
+            <field name="email_to">${object.partner_id.email}</field>
+            <field name="email_cc">${''}</field>
+            <field name="subject">(NOREPLY) Notice: Your SO has been confirmed :[${object.name}]</field>
+            <!--field name="email_recipients">${object.user_id.id}</field-->
+            <field name="model_id" ref="sale_send_email.model_sale_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Dear customer ${object.partner_id.name},</p>
+    
+    <p>Thanks for your purchase</p>
+
+    <p>Order Number : ${object.name}</p>
+
+    <p style="border-left: 1px solid #8e0000; margin-left: 30px;">
+       &nbsp;&nbsp;<strong>Contents of your purchase :</strong><br />
+       <br/>
+       % for line in object.order_line:
+           % if line.product_id.name == 'Shipping':
+               &nbsp;&nbsp;Plus:${line.product_id.name}<br />
+           % else:
+               &nbsp;&nbsp;Product name: <strong>${line.product_id.name}</strong><br />
+               &nbsp;&nbsp;Quantity: <strong>${line.product_uom_qty}</strong><br />
+           % endif
+       % endfor
+       <br/>
+       &nbsp;&nbsp;Total: [${object.pricelist_id.currency_id.symbol}${object.amount_total}]<br />
+    </p>
+
+    <br/>
+    <br/>
+    <br/>
+</div>
+            ]]></field>
+        </record>
+
+        <!--Email template -->
+        <record id="email_template_edi_sale_payment_nz" model="email.template">
+            <field name="name">Payment - Confirmation Notify (NZ)</field>
+            <field name="email_from">${'info@topchoice.co.nz'}</field>
+            <field name="email_to">${object.partner_id.email}</field>
+            <field name="email_cc">${''}</field>
+            <field name="subject">(NOREPLY) Notice: Your SO has been confirmed :[${object.name}]</field>
+            <!--field name="email_recipients">${object.user_id.id}</field-->
+            <field name="model_id" ref="sale_send_email.model_sale_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Dear customer ${object.partner_id.name},</p>
+    
+    <p>This is a payment receipt for ${object.name}</p>
+
+    <p style="border-left: 1px solid #8e0000; margin-left: 30px;">
+       &nbsp;&nbsp;<strong>Contents of your purchase :</strong><br />
+       <br/>
+       % for line in object.order_line:
+           % if line.product_id.name == 'Shipping':
+               &nbsp;&nbsp;Plus:${line.product_id.name}<br />
+           % else:
+               &nbsp;&nbsp;Product name: <strong>${line.product_id.name}</strong><br />
+           % endif
+       % endfor
+       <br/>
+       &nbsp;&nbsp;We have received your payment of: ${object.pricelist_id.currency_id.symbol}${object.amount_paid_lst}<br />
+       <br/>
+       &nbsp;&nbsp;<strong>So far the current SO status as below:</strong><br />
+       <br/>
+       &nbsp;&nbsp;Amount: ${object.pricelist_id.currency_id.symbol}${object.amount_total}<br />
+       &nbsp;&nbsp;Transaction #: ${object.name}<br />
+       &nbsp;&nbsp;This time paid: ${object.pricelist_id.currency_id.symbol}${object.amount_paid_lst}<br />
+       &nbsp;&nbsp;Total paid: ${object.pricelist_id.currency_id.symbol}${object.amount_paid}<br />
+       &nbsp;&nbsp;Remaining Balance: ${object.pricelist_id.currency_id.symbol}${object.residual}<br />
+    </p>
+
+    <br/>
+    <p>We normally dispatch your products within 24 hours,</p>
+    <br/>
+    <p>Best regards,</p>
+    <br/>
+</div>
+            ]]></field>
+        </record>
+
+        <record id="email_template_edi_sale_payment_uk" model="email.template">
+            <field name="name">Payment - Confirmation Notify (UK)</field>
+            <field name="email_from">${'info@topchoice.co.uk'}</field>
+            <field name="email_to">${object.partner_id.email}</field>
+            <field name="email_cc">${''}</field>
+            <field name="subject">(NOREPLY) Notice: Your SO has been confirmed :[${object.name}]</field>
+            <!--field name="email_recipients">${object.user_id.id}</field-->
+            <field name="model_id" ref="sale_send_email.model_sale_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Dear customer ${object.partner_id.name},</p>
+    
+    <p>This is a payment receipt for ${object.name}</p>
+
+    <p style="border-left: 1px solid #8e0000; margin-left: 30px;">
+       &nbsp;&nbsp;<strong>Contents of your purchase :</strong><br />
+       <br/>
+       % for line in object.order_line:
+           % if line.product_id.name == 'Shipping':
+               &nbsp;&nbsp;Plus:${line.product_id.name}<br />
+           % else:
+               &nbsp;&nbsp;Product name: <strong>${line.product_id.name}</strong><br />
+           % endif
+       % endfor
+       <br/>
+       &nbsp;&nbsp;We have received your payment of: ${object.pricelist_id.currency_id.symbol}${object.amount_paid_lst}<br />
+       <br/>
+       &nbsp;&nbsp;<strong>So far the current SO status as below:</strong><br />
+       <br/>
+       &nbsp;&nbsp;Amount: ${object.pricelist_id.currency_id.symbol}${object.amount_total}<br />
+       &nbsp;&nbsp;Transaction #: ${object.name}<br />
+       &nbsp;&nbsp;This time paid: ${object.pricelist_id.currency_id.symbol}${object.amount_paid_lst}<br />
+       &nbsp;&nbsp;Total paid: ${object.pricelist_id.currency_id.symbol}${object.amount_paid}<br />
+       &nbsp;&nbsp;Remaining Balance: ${object.pricelist_id.currency_id.symbol}${object.residual}<br />
+    </p>
+
+    <br/>
+    <p>We normally dispatch your products within 24 hours,</p>
+    <br/>
+    <p>Best regards,</p>
+    <br/>
+</div>
+            ]]></field>
+        </record>
+
+        <record id="email_template_edi_sale_payment_aus" model="email.template">
+            <field name="name">Payment - Confirmation Notify (AUS)</field>
+            <field name="email_from">${'info@topchoice.net.au'}</field>
+            <field name="email_to">${object.partner_id.email}</field>
+            <field name="email_cc">${''}</field>
+            <field name="subject">(NOREPLY) Notice: Your SO has been confirmed :[${object.name}]</field>
+            <!--field name="email_recipients">${object.user_id.id}</field-->
+            <field name="model_id" ref="sale_send_email.model_sale_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Dear customer ${object.partner_id.name},</p>
+    
+    <p>This is a payment receipt for ${object.name}</p>
+
+    <p style="border-left: 1px solid #8e0000; margin-left: 30px;">
+       &nbsp;&nbsp;<strong>Contents of your purchase :</strong><br />
+       <br/>
+       % for line in object.order_line:
+           % if line.product_id.name == 'Shipping':
+               &nbsp;&nbsp;Plus:${line.product_id.name}<br />
+           % else:
+               &nbsp;&nbsp;Product name: <strong>${line.product_id.name}</strong><br />
+           % endif
+       % endfor
+       <br/>
+       &nbsp;&nbsp;We have received your payment of: ${object.pricelist_id.currency_id.symbol}${object.amount_paid_lst}<br />
+       <br/>
+       &nbsp;&nbsp;<strong>So far the current SO status as below:</strong><br />
+       <br/>
+       &nbsp;&nbsp;Amount: ${object.pricelist_id.currency_id.symbol}${object.amount_total}<br />
+       &nbsp;&nbsp;Transaction #: ${object.name}<br />
+       &nbsp;&nbsp;This time paid: ${object.pricelist_id.currency_id.symbol}${object.amount_paid_lst}<br />
+       &nbsp;&nbsp;Total paid: ${object.pricelist_id.currency_id.symbol}${object.amount_paid}<br />
+       &nbsp;&nbsp;Remaining Balance: ${object.pricelist_id.currency_id.symbol}${object.residual}<br />
+    </p>
+
+    <br/>
+    <p>We normally dispatch your products within 24 hours,</p>
+    <br/>
+    <p>Best regards,</p>
+    <br/>
+</div>
+            ]]></field>
+        </record>
+
+        <!--Email template -->
+        <record id="email_template_edi_sale_con_nz" model="email.template">
+            <field name="name">SQ - Confirmation Notify (NZ)</field>
+            <field name="email_from">${'info@topchoice.co.nz'}</field>
+            <field name="email_to">${object.partner_id.email}</field>
+            <field name="email_cc">${''}</field>
+            <field name="subject">(NOREPLY) Notice: Your SO has been confirmed :[${object.name}]</field>
+            <!--field name="email_recipients">${object.user_id.id}</field-->
+            <field name="model_id" ref="sale_send_email.model_sale_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Dear customer ${object.partner_id.name},</p>
+    
+    <p>Thanks for your purchase</p>
+
+    <p>Order Number : ${object.name}</p>
+
+    <p style="border-left: 1px solid #8e0000; margin-left: 30px;">
+       &nbsp;&nbsp;<strong>Contents of your purchase :</strong><br />
+       <br/>
+       % for line in object.order_line:
+           % if line.product_id.name == 'Shipping':
+               &nbsp;&nbsp;Plus:${line.product_id.name}<br />
+           % else:
+               &nbsp;&nbsp;Product name: <strong>${line.product_id.name}</strong><br />
+               &nbsp;&nbsp;Quantity: <strong>${line.product_uom_qty}</strong><br />
+           % endif
+       % endfor
+       <br/>
+       &nbsp;&nbsp;Total: [${object.pricelist_id.currency_id.symbol}${object.amount_total}]<br />
+    </p>
+
+    <br/>
+    <br/>
+    <br/>
+</div>
+            ]]></field>
+        </record>
+
+        <record id="email_template_edi_sale_con_aus" model="email.template">
+            <field name="name">SQ - Confirmation Notify (AUS)</field>
+            <field name="email_from">${'info@topchoice.net.au'}</field>
+            <field name="email_to">${object.partner_id.email}</field>
+            <field name="email_cc">${''}</field>
+            <field name="subject">(NOREPLY) Notice: Your SO has been confirmed :[${object.name}]</field>
+            <!--field name="email_recipients">${object.user_id.id}</field-->
+            <field name="model_id" ref="sale_send_email.model_sale_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Dear customer ${object.partner_id.name},</p>
+    
+    <p>Thanks for your purchase</p>
+
+    <p>Order Number : ${object.name}</p>
+
+    <p style="border-left: 1px solid #8e0000; margin-left: 30px;">
+       &nbsp;&nbsp;<strong>Contents of your purchase :</strong><br />
+       <br/>
+       % for line in object.order_line:
+           % if line.product_id.name == 'Shipping':
+               &nbsp;&nbsp;Plus:${line.product_id.name}<br />
+           % else:
+               &nbsp;&nbsp;Product name: <strong>${line.product_id.name}</strong><br />
+               &nbsp;&nbsp;Quantity: <strong>${line.product_uom_qty}</strong><br />
+           % endif
+       % endfor
+       <br/>
+       &nbsp;&nbsp;Total: [${object.pricelist_id.currency_id.symbol}${object.amount_total}]<br />
+    </p>
+
+    <br/>
+    <br/>
+    <br/>
+</div>
+            ]]></field>
+        </record>
+
+        <record id="email_template_edi_sale_con_uk" model="email.template">
+            <field name="name">SQ - Confirmation Notify (UK)</field>
+            <field name="email_from">${'info@topchoice.co.uk'}</field>
+            <field name="email_to">${object.partner_id.email}</field>
+            <field name="email_cc">${''}</field>
+            <field name="subject">(NOREPLY) Notice: Your SO has been confirmed :[${object.name}]</field>
+            <!--field name="email_recipients">${object.user_id.id}</field-->
+            <field name="model_id" ref="sale_send_email.model_sale_order"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Dear customer ${object.partner_id.name},</p>
+    
+    <p>Thanks for your purchase</p>
+
+    <p>Order Number : ${object.name}</p>
+
+    <p style="border-left: 1px solid #8e0000; margin-left: 30px;">
+       &nbsp;&nbsp;<strong>Contents of your purchase :</strong><br />
+       <br/>
+       % for line in object.order_line:
+           % if line.product_id.name == 'Shipping':
+               &nbsp;&nbsp;Plus:${line.product_id.name}<br />
+           % else:
+               &nbsp;&nbsp;Product name: <strong>${line.product_id.name}</strong><br />
+               &nbsp;&nbsp;Quantity: <strong>${line.product_uom_qty}</strong><br />
+           % endif
+       % endfor
+       <br/>
+       &nbsp;&nbsp;Total: [${object.pricelist_id.currency_id.symbol}${object.amount_total}]<br />
+    </p>
+
+    <br/>
+    <br/>
+    <br/>
+</div>
+            ]]></field>
+        </record>
+
+    <!--Purchase QC Manager -->
+      <record id="email_template_po_qcmanager" model="email.template">
+          <field name="name">PO - Parts PQ Created(QC Manager)</field>
+          <field name="subject">Quotation#${object.name}[${object.date_order}]</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="purchase.model_purchase_order"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">${object.order_line[0].qc_manager.partner_id.email}</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello,${object.order_line[0].qc_manager.partner_id.name} </p> <br/>
+    <p> Parts PQ Created ${object.name} </p> <br/>
+
+</div>
+            ]]></field>
+    </record>
+
+    </data>
+</openerp>

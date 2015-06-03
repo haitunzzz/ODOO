@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<openerp>
+  <data noupdate="1">
+  
+      <!-- Issue290 -->
+      <record id="email_template_hr_service" model="email.template">
+          <field name="name">HR Employee - Days of Service</field>
+          <field name="subject">Today is ${object.name} 's ${object.days_service} Days of service</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="model_hr_employee"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">${object.parent_id.work_email}</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Today is ${object.name} 's ${object.days_service} Days of service</p>
+
+</div>
+            ]]></field>
+      </record>
+
+      <!-- Issue346 -->
+      <record id="email_template_hr_expense_expense_confirm" model="email.template">
+          <field name="name">HR - Expense submit to Manager</field>
+          <field name="subject">You have received an approval request for expense [${object.name}] - From [${object.employee_id.name}] - [${object.company_id.current_date}]</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="model_hr_expense_expense"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">${object.employee_id.parent_id.work_email}</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>You have received an approval request for expense [${object.name}] - From [${object.employee_id.name}] - [${object.company_id.current_date}]</p>
+
+    <p>${object.company_id.name}</p>
+
+    <p><a href="https://erp.mactrends.com/?db=mactrends#id=${object.id}&view_type=form&model=hr.expense.expense&menu_id=440&action=580">Please click here to approve it</a></p>
+
+</div>
+            ]]></field>
+      </record>
+
+      <record id="email_template_hr_expense_expense_approve" model="email.template">
+          <field name="name">HR - Expense has been approved by manager</field>
+          <field name="subject">You have received an approved request for expense [${object.name}] - From [${object.employee_id.name}] - [${object.company_id.current_date}], approved by [${object.user_valid.partner_id.name}]</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="model_hr_expense_expense"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">accounts@mactrends.com</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>You have received an approved request for expense [${object.name}] - From [${object.employee_id.name}] - [${object.company_id.current_date}], approved by [${object.user_valid.partner_id.name}]</p>
+
+    <p>${object.company_id.name}</p>
+
+    <p><a href="https://erp.mactrends.com/?db=mactrends#id=${object.id}&view_type=form&model=hr.expense.expense&menu_id=440&action=580">Please click here to check it and generate accounting entry</a></p>
+
+</div>
+            ]]></field>
+      </record>
+
+    </data>
+</openerp>

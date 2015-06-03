@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_order_reps,sale.order,sale.model_sale_order,sale.group_sale_reps,1,1,1,0
+access_sale_order_line_reps,sale.order.line,sale.model_sale_order_line,sale.group_sale_reps,1,1,1,0
+access_product_product_reps,product.product,"product.model_product_product",sale.group_sale_reps,1,0,0,0
+access_product_images_reps,product.images,product_images_olbs.model_product_images,sale.group_sale_reps,1,0,0,0
+access_crm_lead_reps,crm.lead,crm.model_crm_lead,sale.group_sale_reps,1,1,1,0
+access_mrp_bom_reps,mrp.bom,mrp.model_mrp_bom,sale.group_sale_reps,1,0,0,0
+access_res_partner_reps,res.partner,base.model_res_partner,sale.group_sale_reps,1,0,0,0
+access_stock_picking_reps,stock.picking,stock.model_stock_picking,sale.group_sale_reps,1,0,0,0
+access_stock_move_reps,stock.move,stock.model_stock_move,sale.group_sale_reps,1,0,0,0
+access_account_move_line_reps,account.move.line,account.model_account_move_line,sale.group_sale_reps,1,0,0,0
+access_account_move_reconcile_reps,account.move.reconcile,account.model_account_move_reconcile,sale.group_sale_reps,1,0,0,0
+access_account_invoice_reps,account.invoice,account.model_account_invoice,sale.group_sale_reps,1,0,0,0
+access_res_users_reps,res.users,base.model_res_users,sale.group_sale_reps,1,1,0,0

@@ -1,0 +1,15 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_product_brand","product.brand","model_product_brand","base.group_user",1,1,0,0
+"access_product_brand_sale_manager","product.brand sale","model_product_brand","base.group_sale_manager",1,1,1,0
+"access_product_brand_stock_manager","product.brand stock","model_product_brand","stock.group_stock_manager",1,1,1,0
+"access_product_brand_purchase_manager","product.brand purchase","model_product_brand","purchase.group_purchase_manager",1,1,1,0
+"access_product_sizetype","product.sizetype","model_product_sizetype","base.group_user",1,1,0,0
+"access_product_sizetype_stock_manager","product.sizetype stock","model_product_sizetype","stock.group_stock_manager",1,1,1,0
+"access_product_sizetype_sale_manager","product.sizetype sale","model_product_sizetype","base.group_sale_manager",1,1,1,0
+"access_product_sizetype_purchase_manager","product.sizetype purchase","model_product_sizetype","purchase.group_purchase_manager",1,1,1,0
+"access_product_size","product.size","model_product_size","base.group_user",1,1,0,0
+"access_product_size_sale_manager","product.size sale","model_product_size","base.group_sale_manager",1,1,1,0
+"access_product_size_stock_manager","product.size stock","model_product_size","stock.group_stock_manager",1,1,1,0
+"access_product_size_purchase_manager","product.size purchase","model_product_size","purchase.group_purchase_manager",1,1,1,0
+"access_product_item","product.item","model_product_item","base.group_user",1,1,0,0
+"access_product_item_manager","product.item manager","model_product_item","stock.group_stock_user",1,1,1,1

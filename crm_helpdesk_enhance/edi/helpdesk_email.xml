@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<openerp>
+  <data noupdate="1">
+  
+      <!--Template created for email notification to responsible user-->      
+        
+      <record id="email_template_helpdesk_create" model="email.template">
+          <field name="name">CRM - Helpdesk - Customer New Ticket Notification</field>
+          <field name="subject">[no-reply] - New Ticket has been lodged - [${object.partner_id.name}] - [${object.company_id.current_date}] </field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="crm_helpdesk_enhance.model_crm_helpdesk"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">${object.partner_id.email}</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello,${object.partner_id.name} </p> <br/>
+    <p>[no-reply] - New Ticket has been lodged - [${object.partner_id.name}] - [${object.company_id.current_date}] 
+
+</div>
+            ]]></field>
+      </record>
+        
+      <record id="email_template_helpdesk_create_com" model="email.template">
+          <field name="name">CRM - Helpdesk - New Ticket Notification</field>
+          <field name="subject">[no-reply] - New Ticket has been lodged - [${object.partner_id.name}] - [${object.company_id.current_date}] - [${object.company_id.name}] - [${object.partner_id.country_id.name}]</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="crm_helpdesk_enhance.model_crm_helpdesk"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">${object.company_id.helpdesk_email}</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello,${object.partner_id.name} </p> <br/>
+    <p>[no-reply] - New Ticket has been lodged - [${object.partner_id.name}] - [${object.company_id.current_date}] - [${object.company_id.name}] - [${object.partner_id.country_id.name}] 
+
+</div>
+            ]]></field>
+      </record>
+
+      <record id="email_template_helpdesk_notification" model="email.template">
+          <field name="name">CRM - Helpdesk - Customer New Update Received</field>
+          <field name="subject">[no-reply] - A New Update has been received - [${object.partner_id.name}] - [${object.company_id.current_date}]</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="crm_helpdesk_enhance.model_crm_helpdesk"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">${object.partner_id.email}</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello,${object.partner_id.name} </p> <br/>
+    <p>[no-reply] - A New Update has been received - [${object.partner_id.name}] - [${object.company_id.current_date}] 
+
+</div>
+            ]]></field>
+      </record>
+
+      <record id="email_template_helpdesk_close" model="email.template">
+          <field name="name">CRM - Helpdesk - Ticket Closed</field>
+          <field name="subject">[no-reply] - Your ticket has now been closed - [${object.partner_id.name}] - [${object.company_id.current_date}] </field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="crm_helpdesk_enhance.model_crm_helpdesk"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">${object.partner_id.email}</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello,${object.partner_id.name} </p> <br/>
+    <p>[no-reply] - Your ticket has now been closed - [${object.partner_id.name}] - [${object.company_id.current_date}] 
+
+</div>
+            ]]></field>
+      </record>
+    </data>
+</openerp>

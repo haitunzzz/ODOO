@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="stock_picking_in_inherit_sale" model="ir.ui.view">
+            <field name="name">stock.picking.form</field>
+            <field name="model">stock.picking.in</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_process']" position="after">
+                    <button name="print_item" states="assigned" string="Print Product Items" type="object" class="oe_highlight" groups="base.group_user"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="purchase_order_form_item" model="ir.ui.view">
+            <field name="name">purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//page[@string='Incoming Shipments &amp; Invoices']" position="after">
+                        <page string="Purchase Order Sale Records">
+                            <field name="item_ids">
+                                <tree string="Product Sale Records" colors="grey:status=='saled';blue:status=='tmp'">
+                                    <field name="product_id" />
+                                    <field name="iid" />
+                                    <field name="status"/>
+                                    <field name="price_unit" />
+                                    <field name="price_sale" invisible="1"/>
+                                    <field name="sale_order_id"/>
+                                    <field name="pos_order_id"/>
+                                    <field name="out_stock_date" />
+                                    <field name="stock_location_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_order_form_item" model="ir.ui.view">
+            <field name="name">sale.order.form.item</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                   <xpath expr="//page[@string='Other Information']" position="after">                   
+                        <page string="Cost Price of Sale Products">
+                            <field name="item_ids">
+                                <tree string="Product Sale Records" colors="grey:status=='on_hand'">
+                                    <field name="product_id" />
+                                    <field name="iid" />
+                                    <field name="status"/>
+                                    <field name="price_unit" sum="Cost Price"/>
+                                    <field name="in_currency"/>
+                                    <field name="price_sale" sum="Sale Price"/>
+                                    <field name="out_currency"/>
+                                    <field name="out_stock_date" />
+                                    <field name="stock_location_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                   </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_stock_move_form_item" model="ir.ui.view">
+            <field name="name">stock.move.form.item</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="/form/sheet" position="inside"> 
+                        <field name="item_ids">
+                            <tree string="Product Move Records" colors="grey:status=='tmp'">
+                                <field name="product_id" />
+                                <field name="iid" />
+                                <field name="status"/>
+                                <field name="price_unit" sum="Cost Price"/>
+                                <field name="in_currency"/>
+                                <field name="price_sale" sum="Sale Price"/>
+                                <field name="out_currency"/>
+                                <field name="out_stock_date" />
+                                <field name="stock_location_id"/>
+                            </tree>
+                        </field>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

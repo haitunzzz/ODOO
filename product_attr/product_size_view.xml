@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+    by wgwang svd.wang@gmail.com
+    http://wgwang.github.com
+-->
+
+
+<openerp>
+    <data>
+
+        <record id="view_productsize_tree" model="ir.ui.view">
+            <field name="name">product.size.tree</field>
+            <field name="model">product.size</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="ProductSize">
+                    <field name="name"/>
+                    <field name="sizetype_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_productsize_search" model="ir.ui.view">
+            <field name="name">product.size.search</field>
+            <field name="model">product.size</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="ProductSize">
+                    <field name="name" />
+                    <separator orientation="vertical"/>
+                    <field name="sizetype_id" widget="selection" context="{'sizetype_id': self}" />
+                </search>
+            </field>
+        </record>
+
+        <record id="product_size_action" model="ir.actions.act_window">
+            <field name="name">ProductSize</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.size</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_productsize_tree"/>
+            <field name="search_view_id" ref="view_productsize_search"/>
+        </record>
+
+        <menuitem name="Size Management" id="menu_sale_product_productsize" action="product_size_action" groups="base.group_sale_manager" parent="base.menu_product"/>
+        <menuitem name="Size Management" id="menu_stock_product_productsize" action="product_size_action" groups="stock.group_stock_manager" parent="stock.menu_stock_product"/>
+        <menuitem name="Size Management" id="menu_purchase_product_productsize" action="product_size_action" groups="purchase.group_purchase_manager" parent="purchase.menu_procurement_management_product"/>
+        
+    </data>
+</openerp>

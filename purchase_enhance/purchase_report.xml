@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report auto="False" id="report_purchase_order_packing" model="purchase.order"
+                name="purchase.order" rml="purchase_enhance/report/order_packing.rml"
+                usage="default" string="Packing List"/>
+    </data>
+</openerp>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+    <menuitem
+        id="purchase_requisition.menu_purchase_requisition_pro_mgt"
+        sequence="0"
+        parent="purchase.menu_procurement_management"
+        groups="purchase_requisition.group_purchase_requisition_user,purchase_requisition.group_purchase_requisition_manager"
+        action="purchase_requisition.action_purchase_requisition"/>
+
+        <menuitem action="purchase.purchase_rfq" id="purchase.menu_purchase_rfq"
+            parent="purchase.menu_procurement_management"
+            sequence="1"/>
+
+        <record id="view_purchase_requisition_form_inh" model="ir.ui.view">
+            <field name="name">purchase.requisition.form</field>
+            <field name="model">purchase.requisition</field>
+            <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+            <field name="arch" type="xml">
+                <button name="tender_in_progress" position="replace">
+                    <!-- Issue362 -->
+                    <!--button name="tender_done_po" states="draft" string="Approve and Draft PO" type="object" class="oe_highlight" groups="purchase_requisition.group_purchase_requisition_manager"/-->
+                    <button name="tender_done_po_approve" states="draft" string="Approve" type="object" class="oe_highlight" groups="purchase_requisition.group_purchase_requisition_manager"/>
+                    <field name="purchase_ids" invisible="1"/>
+                    <button name="tender_done_po_draft" string="Create Draft PO" type="object" class="oe_highlight" groups="purchase_requisition.group_purchase_requisition_manager" attrs="{'invisible':['|',('purchase_ids','!=',[]),('state','=','cancel')]}"/>
+                </button>
+                <!--button name="tender_reset" position="replace">
+                </button-->
+                <button name="tender_done" position="replace">
+                    <button name="tender_delete_pro" states="cancel" string="Delete All Proposed Products" type="object" class="oe_highlight"/>
+                </button>
+                <field name="state" position="replace">
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done,cancel" statusbar_colors='{"in_progress":"blue"}'/>
+                </field>
+
+                <field name="exclusive" position="replace">
+                    <field name="project"/>
+                    <field name="pro_description"/>
+                    <field name="partner_id"/>
+                    <field name="priority"/>
+                    <field name="usd_total"/>
+                    <field name="email_to" widget="many2many_tags"/>
+                </field>
+                <field name="date_start" position="replace">
+                    <field name="date_start" string="Proposed Purchase Date"/>
+                </field>
+                <field name="date_end" position="replace">
+                    <field name="date_end" string="Proposed Selling Date"/>
+                    <field name="target" widget="many2many_tags"/>
+                </field>
+                <field name="product_uom_id" groups="product.group_uom" position="replace">
+                    <field name="product_uom_id" groups="product.group_uom" string="Uom"/>
+                    <field name="loading"/>
+                    <field name="price_target"/>
+                    <field name="price_nz"/>
+                    <field name="price_au"/>
+                    <field name="price_uk"/>
+                    <field name="annualv" string="Annual Sales Target"/>
+                    <field name="pprice"/>
+                    <field name="pqty"/>
+                </field>
+
+                <div class="oe_right oe_button_box" position="replace">
+                </div>
+                <separator string="Quotations" position="replace">
+                </separator>
+                <field name="purchase_ids" position="replace">
+                </field>
+
+                <separator string="Terms and Conditions" position="replace">
+                    <separator string="Key/Winning Features"/>
+                    <group>
+                        <field name="winning"/>
+                    </group>
+                    <label for="note"/>
+                    <field name="note" widget="html" editor_height="200px"/>
+                    <separator string="Competitor #1"/>
+                    <group>
+                    <field name="annualv_1"/>
+                    <field name="monthlya_1"/>
+                    <field name="off_monthlya_1"/>
+                    <field name="models_1"/>
+                    <field name="skus_1"/>
+                    </group>
+                    <label for="swot_1"/>
+                    <field name="swot_1" widget="html" editor_height="200px"/>
+                    <separator string="Competitor #2"/>
+                    <group>
+                    <field name="annualv_2"/>
+                    <field name="monthlya_2"/>
+                    <field name="off_monthlya_2"/>
+                    <field name="models_2"/>
+                    <field name="skus_2"/>
+                    </group>
+                    <label for="swot_2"/>
+                    <field name="swot_2" widget="html"  editor_height="200px"/>
+                    <separator string="Competitor #3"/>
+                    <group>
+                    <field name="annualv_3"/>
+                    <field name="monthlya_3"/>
+                    <field name="off_monthlya_3"/>
+                    <field name="models_3"/>
+                    <field name="skus_3"/>
+                    </group>
+                    <label for="swot_3"/>
+                    <field name="swot_3" widget="html" editor_height="200px"/>
+                    <separator string="Addtional Comments"/>
+                </separator>
+                <field name="description"  position="replace">
+                    <field name="description" widget="html"  editor_height="200px"/>
+                </field>        
+                <field name="product_id" position="after">
+                    <field name="name"/>
+                </field>        
+            </field>        
+        </record>
+
+
+        <record id="view_purchase_requisition_tree_inh" model="ir.ui.view">
+            <field name="name">purchase.requisition.tree</field>
+            <field name="model">purchase.requisition</field>
+            <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="pro_description"/>
+                </field>        
+                <field name="origin" position="replace">
+                    <field name="priority"/>
+                    <field name="usd_total"/>
+                </field>        
+            </field>        
+        </record>
+
+    </data>
+</openerp>

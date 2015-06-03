@@ -1,0 +1,583 @@
+# Translation of hxERP - Humanity and eXcellence ERP.
+# This file contains the translation of the following modules:
+#	* product_attr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: hxERP - Humanity and eXcellence ERP 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-06-06 08:00+0000\n"
+"PO-Revision-Date: 2013-06-06 08:00+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_attr
+#: field:product.brand,logo:0
+msgid "Logo File"
+msgstr "徽标文件"
+
+#. module: product_attr
+#: field:product.with.stock,in_stock_end_date:0
+msgid "In Stock End Date"
+msgstr "入库截止日期"
+
+#. module: product_attr
+#: field:product.item,out_currency:0
+msgid "Sale out Currency"
+msgstr "销售货币"
+
+#. module: product_attr
+#: model:ir.ui.menu,name:product_attr.menu_pos_product_with_stock
+#: model:ir.ui.menu,name:product_attr.menu_purchase_product_with_stock
+#: model:ir.ui.menu,name:product_attr.menu_sale_product_with_stock
+#: model:ir.ui.menu,name:product_attr.menu_stock_product_with_stock
+msgid "Stock Products"
+msgstr "库存产品"
+
+#. module: product_attr
+#: field:product.create.by.sizetype,hx_price_eu:0
+#: field:product.product,hx_price_eu:0
+msgid "Europe Price"
+msgstr "欧洲价"
+
+#. module: product_attr
+#: model:ir.actions.act_window,name:product_attr.action_product_brand
+#: field:product.create.by.sizetype,hx_product_brand_id:0
+#: view:product.product:0
+#: field:product.product,hx_product_brand_id:0
+#: field:product.with.stock,product_brand_id:0
+msgid "Brand"
+msgstr "品牌"
+
+#. module: product_attr
+#: selection:product.item,status:0
+msgid "returned to supplier"
+msgstr "供应商退货"
+
+#. module: product_attr
+#: selection:product.item,status:0
+msgid "item printed"
+msgstr "item printed"
+
+#. module: product_attr
+#: view:product.product:0
+msgid "China Price:"
+msgstr "TZIEN价"
+
+#. module: product_attr
+#: field:product.item,note:0
+msgid "Notes"
+msgstr "备注"
+
+#. module: product_attr
+#: field:product.item,sale_order_id:0
+msgid "Sale Order"
+msgstr "销售订单"
+
+#. module: product_attr
+#: help:product.sizetype,name:0
+msgid "The name of the Product Size Type."
+msgstr "产品尺寸类型的名称"
+
+#. module: product_attr
+#: field:product.item,purchase_order_id:0
+msgid "Purchase Order"
+msgstr "采购订单"
+
+#. module: product_attr
+#: sql_constraint:product.brand:0
+msgid "The reference must be unique"
+msgstr "条码必须唯一"
+
+#. module: product_attr
+#: view:product.with.stock:0
+msgid "Product Stock"
+msgstr "产品库存"
+
+#. module: product_attr
+#: field:product.create.by.sizetype,hx_price_hk:0
+#: field:product.product,hx_price_hk:0
+msgid "Hongkong Price"
+msgstr "香港价"
+
+#. module: product_attr
+#: field:product.item,uuid:0
+msgid "UUID"
+msgstr "UUID"
+
+#. module: product_attr
+#: field:product.brand,reference:0
+#: field:product.with.stock,product_ref:0
+msgid "Reference"
+msgstr "条码"
+
+#. module: product_attr
+#: model:ir.model,name:product_attr.model_product_with_stock
+msgid "Product With Stock"
+msgstr "库存产品"
+
+#. module: product_attr
+#: code:addons/product_attr/product.py:44
+#: code:addons/product_attr/product.py:47
+#: code:addons/product_attr/product.py:78
+#: code:addons/product_attr/product.py:81
+#, python-format
+msgid "Auto Generating name must have brand!"
+msgstr "自动生产名称的产品必须选择一个品牌"
+
+#. module: product_attr
+#: field:product.item,stock_move_id:0
+msgid "Stock Move"
+msgstr "Stock Move"
+
+#. module: product_attr
+#: field:product.item,stock_location_id:0
+msgid "Stock Location"
+msgstr "仓库位置"
+
+#. module: product_attr
+#: code:addons/product_attr/product.py:44
+#: code:addons/product_attr/product.py:47
+#: code:addons/product_attr/product.py:78
+#: code:addons/product_attr/product.py:81
+#: code:addons/product_attr/wizard/product_create_by_sizetype.py:70
+#, python-format
+msgid "Warning!"
+msgstr "警告"
+
+#. module: product_attr
+#: selection:product.product,hx_gender:0
+msgid "Female"
+msgstr "女性"
+
+#. module: product_attr
+#: selection:product.with.stock,way_get:0
+msgid "Weekly"
+msgstr "一周新入库"
+
+#. module: product_attr
+#: selection:product.item,new_type:0
+#: selection:product.product,hx_new_type:0
+msgid "Second-hand C"
+msgstr "二手C级"
+
+#. module: product_attr
+#: selection:product.item,new_type:0
+#: selection:product.product,hx_new_type:0
+msgid "Second-hand B"
+msgstr "二手B级"
+
+#. module: product_attr
+#: selection:product.item,new_type:0
+#: selection:product.product,hx_new_type:0
+msgid "Second-hand A"
+msgstr "二手A级"
+
+#. module: product_attr
+#: code:addons/product_attr/wizard/product_create_by_sizetype.py:70
+#, python-format
+msgid "All Size Have Exists in ERP"
+msgstr "All Size Have Exists in ERP"
+
+#. module: product_attr
+#: field:product.with.stock,befor_time:0
+msgid "Befor Time In Stock"
+msgstr "在此之前入库的库存产品"
+
+#. module: product_attr
+#: view:product.with.stock:0
+msgid "Confirm"
+msgstr "确定"
+
+#. module: product_attr
+#: code:addons/product_attr/wizard/product_with_stock.py:89
+#: code:addons/product_attr/wizard/product_with_stock.py:175
+#, python-format
+msgid "Products Stock"
+msgstr "产品库存"
+
+#. module: product_attr
+#: selection:product.item,new_type:0
+#: selection:product.product,hx_new_type:0
+msgid "Second-hand New"
+msgstr "二手新品级"
+
+#. module: product_attr
+#: field:product.with.stock,warehouse_id:0
+msgid "Warehouse"
+msgstr "仓库"
+
+#. module: product_attr
+#: selection:product.item,new_type:0
+#: selection:product.product,hx_new_type:0
+msgid "New"
+msgstr "新品"
+
+#. module: product_attr
+#: field:product.create.by.sizetype,hx_material:0
+#: field:product.product,hx_material:0
+#: field:product.with.stock,product_material:0
+msgid "Material"
+msgstr "材质"
+
+#. module: product_attr
+#: selection:product.item,new_type:0
+#: selection:product.product,hx_new_type:0
+msgid "Second-hand Like New"
+msgstr "二手类新级"
+
+#. module: product_attr
+#: view:product.brand:0
+#: field:product.brand,story:0
+msgid "Brand Story"
+msgstr "品牌故事"
+
+#. module: product_attr
+#: model:ir.model,name:product_attr.model_product_create_by_sizetype
+msgid "Create Product By Size Type"
+msgstr "通过尺寸类型创建产品"
+
+#. module: product_attr
+#: view:product.item:0
+#: field:product.item,iid:0
+msgid "Item id"
+msgstr "条目id"
+
+#. module: product_attr
+#: sql_constraint:product.item:0
+msgid "The iid must be unique"
+msgstr "iid必须唯一"
+
+#. module: product_attr
+#: view:product.item:0
+msgid "Auxiliary"
+msgstr "辅助"
+
+#. module: product_attr
+#: view:product.product:0
+msgid "Items"
+msgstr "条目"
+
+#. module: product_attr
+#: sql_constraint:product.size:0
+msgid "The name of the size with same type must be unique !"
+msgstr "同一类型的尺码必须唯一"
+
+#. module: product_attr
+#: selection:product.product,hx_gender:0
+msgid "Male"
+msgstr "男性"
+
+#. module: product_attr
+#: model:ir.model,name:product_attr.model_product_size
+#: field:product.item,size:0
+#: field:product.product,hx_product_size:0
+#: field:product.size,name:0
+msgid "Product Size"
+msgstr "产品尺寸"
+
+#. module: product_attr
+#: field:product.item,new_type:0
+#: field:product.product,hx_new_type:0
+msgid "New/Secondhand Type"
+msgstr "新品/二手类型"
+
+#. module: product_attr
+#: help:product.product,hx_product_item_ids:0
+msgid "Items of product in stock."
+msgstr "产品项可售"
+
+#. module: product_attr
+#: sql_constraint:product.product:0
+msgid "The brand_model_material_color must be unique"
+msgstr "品牌型号材质颜色必须唯一"
+
+#. module: product_attr
+#: field:product.item,write_date:0
+msgid "Update Date"
+msgstr "更新日期"
+
+#. module: product_attr
+#: field:product.create.by.sizetype,hx_product_size_type_id:0
+#: field:product.product,hx_product_size_type_id:0
+msgid "SizeType"
+msgstr "尺寸类型"
+
+#. module: product_attr
+#: field:product.create.by.sizetype,categ_id:0
+#: field:product.with.stock,category_id:0
+msgid "Category"
+msgstr "类别"
+
+#. module: product_attr
+#: help:product.sizetype,description:0
+msgid "The description of size type."
+msgstr "尺寸类型的描述"
+
+#. module: product_attr
+#: field:product.with.stock,way_get:0
+msgid "Way"
+msgstr "方式"
+
+#. module: product_attr
+#: field:product.item,status:0
+msgid "Status"
+msgstr "状态"
+
+#. module: product_attr
+#: help:product.product,hx_product_brand_id:0
+msgid "Select a brand for this product"
+msgstr "为这个产品选择一个品牌"
+
+#. module: product_attr
+#: selection:product.with.stock,way_get:0
+msgid "Normal"
+msgstr "普通"
+
+#. module: product_attr
+#: view:product.create.by.sizetype:0
+msgid "create"
+msgstr "创建产品"
+
+#. module: product_attr
+#: view:product.product:0
+msgid "HongKong Price:"
+msgstr "香港价"
+
+#. module: product_attr
+#: field:product.item,auuid:0
+msgid "Aux-UUID"
+msgstr "Aux-UUID"
+
+#. module: product_attr
+#: field:product.item,in_currency:0
+msgid "Purchase in Currency"
+msgstr "采购货币"
+
+#. module: product_attr
+#: model:ir.model,name:product_attr.model_product_sizetype
+#: field:product.size,sizetype_id:0
+#: field:product.sizetype,name:0
+msgid "Product Size Type"
+msgstr "产品尺寸类型"
+
+#. module: product_attr
+#: model:ir.ui.menu,name:product_attr.menu_create_products
+msgid "Create Products"
+msgstr "根据尺寸类型生成产品"
+
+#. module: product_attr
+#: selection:product.with.stock,way_get:0
+msgid "New Ahead(Slow)"
+msgstr "新品在前(慢,请少用)"
+
+#. module: product_attr
+#: selection:product.item,status:0
+msgid "item in the stock"
+msgstr "产品可售"
+
+#. module: product_attr
+#: model:ir.ui.menu,name:product_attr.menu_purchase_product_productsize
+#: model:ir.ui.menu,name:product_attr.menu_sale_product_productsize
+#: model:ir.ui.menu,name:product_attr.menu_stock_product_productsize
+msgid "Size Management"
+msgstr "尺寸管理"
+
+#. module: product_attr
+#: model:ir.actions.act_window,name:product_attr.product_size_action
+#: view:product.size:0
+msgid "ProductSize"
+msgstr "ProductSize"
+
+#. module: product_attr
+#: code:addons/product_attr/wizard/product_create_by_sizetype.py:73
+#, python-format
+msgid "Create Product By Size Type [%d]"
+msgstr "生成产品： [%d]"
+
+#. module: product_attr
+#: field:product.item,pos_order_id:0
+msgid "Pos Order"
+msgstr "Pos订单"
+
+#. module: product_attr
+#: view:product.item:0
+#: selection:product.product,hx_gender:0
+msgid "General"
+msgstr "通用"
+
+#. module: product_attr
+#: field:product.item,price_sale:0
+msgid "Sale Price"
+msgstr "销售价"
+
+#. module: product_attr
+#: sql_constraint:product.sizetype:0
+msgid "The name of the size type must be unique !"
+msgstr "尺寸类型必须唯一"
+
+#. module: product_attr
+#: field:product.with.stock,product_size_id:0
+msgid "Size"
+msgstr "尺寸"
+
+#. module: product_attr
+#: model:ir.actions.act_window,name:product_attr.action_product_items
+#: model:ir.ui.menu,name:product_attr.menu_purchase_product_items
+#: model:ir.ui.menu,name:product_attr.menu_sale_product_items
+#: model:ir.ui.menu,name:product_attr.menu_stock_product_items
+#: view:product.item:0
+#: field:product.product,hx_product_item_ids:0
+msgid "Product Items"
+msgstr "产品条目"
+
+#. module: product_attr
+#: field:product.create.by.sizetype,hx_year_season:0
+#: field:product.product,hx_year_season:0
+msgid "Year Season"
+msgstr "年份 季节"
+
+#. module: product_attr
+#: model:ir.ui.menu,name:product_attr.menu_purchase_product_brand
+#: model:ir.ui.menu,name:product_attr.menu_sale_product_brand
+#: model:ir.ui.menu,name:product_attr.menu_stock_product_brand
+msgid "Brand Management"
+msgstr "品牌管理"
+
+#. module: product_attr
+#: field:product.item,out_stock_date:0
+msgid "Out Stock Date"
+msgstr "出库时间"
+
+#. module: product_attr
+#: field:product.item,price_unit:0
+msgid "Unit Price"
+msgstr "成本价"
+
+#. module: product_attr
+#: field:product.brand,partner_id:0
+msgid "partner"
+msgstr "partner"
+
+#. module: product_attr
+#: model:ir.model,name:product_attr.model_product_item
+#: view:product.item:0
+msgid "product.item"
+msgstr "product.item"
+
+#. module: product_attr
+#: model:ir.model,name:product_attr.model_product_product
+#: view:product.item:0
+#: field:product.item,product_id:0
+#: view:product.product:0
+msgid "Product"
+msgstr "产品"
+
+#. module: product_attr
+#: view:product.brand:0
+#: field:product.brand,description:0
+#: field:product.size,description:0
+#: field:product.sizetype,description:0
+msgid "Description"
+msgstr "描述"
+
+#. module: product_attr
+#: field:product.brand,name:0
+msgid "Brand Name"
+msgstr "品牌名"
+
+#. module: product_attr
+#: field:product.brand,headquarter:0
+msgid "Head Quarter"
+msgstr "总部"
+
+#. module: product_attr
+#: field:product.product,hx_origin:0
+msgid "Origin Country"
+msgstr "原产国"
+
+#. module: product_attr
+#: view:product.product:0
+msgid "Without Image"
+msgstr "不带图片"
+
+#. module: product_attr
+#: model:ir.model,name:product_attr.model_product_brand
+#: view:product.brand:0
+msgid "product.brand"
+msgstr "product.brand"
+
+#. module: product_attr
+#: model:ir.actions.act_window,name:product_attr.action_view_product_create_by_size_type
+msgid "Product Create By Size Type Action"
+msgstr "根据尺寸类型批量生成产品"
+
+#. module: product_attr
+#: field:product.product,hx_gender:0
+msgid "Gender"
+msgstr "性别"
+
+#. module: product_attr
+#: field:product.create.by.sizetype,hx_price_cn:0
+#: field:product.product,hx_price_cn:0
+msgid "China Price"
+msgstr "TZIEN价"
+
+#. module: product_attr
+#: selection:product.item,status:0
+msgid "item is sold"
+msgstr "已售"
+
+#. module: product_attr
+#: view:product.create.by.sizetype:0
+msgid "Product Create"
+msgstr "生成产品"
+
+#. module: product_attr
+#: field:product.create.by.sizetype,hx_model:0
+#: field:product.product,hx_model:0
+#: field:product.with.stock,product_model:0
+msgid "Model"
+msgstr "型号"
+
+#. module: product_attr
+#: model:ir.actions.act_window,name:product_attr.action_view_products_with_stock
+msgid "Products with Stock"
+msgstr "库存产品"
+
+#. module: product_attr
+#: field:product.create.by.sizetype,hx_color:0
+#: field:product.product,hx_color:0
+#: field:product.with.stock,product_color:0
+msgid "Color"
+msgstr "颜色"
+
+#. module: product_attr
+#: view:product.product:0
+msgid "Europe Price:"
+msgstr "欧洲价"
+
+#. module: product_attr
+#: field:product.with.stock,in_stock_start_date:0
+msgid "In Stock Start Date"
+msgstr "入库开始日期"
+
+#. module: product_attr
+#: field:product.item,create_date:0
+msgid "Create Date"
+msgstr "创建日期"
+
+#. module: product_attr
+#: field:product.item,in_stock_date:0
+msgid "Purchased Date"
+msgstr "入库日期"
+
+#. module: product_attr
+#: help:product.brand,partner_id:0
+msgid "Select a partner for this brand if it exist"
+msgstr "如果需要，为这个品牌选择一个合作伙伴"
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record id="view_prepay_wizard_form_inh" model="ir.ui.view">
+			<field name="name">view.prepay_wizard.form</field>
+			<field name="model">sale.prepayment</field>
+            <field name="inherit_id" ref="sale_prepayment.view_prepay_wizard_form"/>
+			<field name="arch" type="xml">
+					<group name="base" position="after">
+						<group>							
+                            <field name="date"  on_change="onchange_date(date, context)"/>
+                            <field name="period_id"/>
+                            <field name="reference" string="Payment Ref" placeholder="e.g. 003/10"/>
+                            <field name="name" colspan="2" placeholder="e.g. Invoice SAJ/0042"/>
+						</group>
+					</group>
+			</field>
+		</record>
+
+	</data>
+</openerp>

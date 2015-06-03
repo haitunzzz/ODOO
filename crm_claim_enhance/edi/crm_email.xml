@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<openerp>
+  <data noupdate="1">
+  
+      <!--Template created for email notification to responsible user-->      
+        
+      <record id="email_template_crm_lead_notify" model="email.template">
+          <field name="name">CRM - Lead Notify</field>
+          <field name="subject">Lead Notify [${object.name}] Created</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="crm.model_crm_lead"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">${object.user_id.email}</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello,${object.user_id.partner_id.name} </p> <br/>
+    <p>Lead [${object.name}] has created </p>
+
+</div>
+            ]]></field>
+      </record>
+
+      <record id="email_template_crm_claim_responsible" model="email.template">
+          <field name="name">CRM - Claim Responsible</field>
+          <field name="subject">Claim ${object.number} needs your action.</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="crm_claim.model_crm_claim"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to"></field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello, </p> <br/>
+
+    <p>Please note that you are the responsible person of Claim ${object.number}, please go to ERP sales menu -> claim and complete the resolution within 48 hours.</p>
+
+    <p>This will be recorded as a part of your performance review.</p>
+
+    <p>Management Office@Mactrends </p>
+
+</div>
+            ]]></field>
+      </record>
+
+    </data>
+</openerp>

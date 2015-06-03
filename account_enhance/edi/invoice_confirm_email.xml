@@ -1,0 +1,98 @@
+<?xml version="1.0" ?>
+<openerp>
+    <!-- Mail template is done in a NOUPDATE block
+         so users can freely customize/delete them -->
+    <data noupdate="1">
+
+        <!-- EDI related Email Templates menu -->
+        <record model="ir.actions.act_window" id="action_email_templates">
+            <field name="name">Email Templates</field>
+            <field name="res_model">email.template</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="email_template.email_template_tree" />
+            <field name="search_view_id" ref="email_template.view_email_template_search"/>
+            <field name="context" eval="{'search_default_model_id': ref('account_enhance.model_account_invoice')}"/>
+        </record>
+
+        <record id="email_template_edi_customer_invoice_confirm" model="email.template">
+            <field name="name">Customer Invoice Confirm</field>
+            <field name="email_from">${'info@topchoice.co.nz'}</field>
+            <field name="email_to"></field>
+            <field name="subject">Customer Invoice Confirmation: Company - ${object.partner_id.name} / Reference -${object.origin}</field>
+            <field name="model_id" ref="account_enhance.model_account_invoice"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                System Notice: Invoice draft: Company - ${object.partner_id.name} / Reference -${object.origin} need to be confirmed
+            ]]></field>
+        </record>
+
+
+        <!--Email template -->
+        <record id="email_template_edi_supplier_invoice_confirm" model="email.template">
+            <field name="name">Supplier Invoice Confirm</field>
+            <field name="email_from">${'info@topchoice.co.nz'}</field>
+            <field name="email_to">${'accounts@mactrends.com'}</field>
+            <field name="subject">Supplier Invoice Confirmation: Company - ${object.partner_id.name} / Reference -${object.origin}</field>
+            <field name="model_id" ref="account_enhance.model_account_invoice"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                System Notice: Invoice draft: Company - ${object.partner_id.name} / Reference -${object.origin} has been confirmed
+            ]]></field>
+        </record>
+
+        <!--Email template -->
+        <record id="email_template_edi_supplier_invoice_create" model="email.template">
+            <field name="name">Invoice - Supplier Invoice Create</field>
+            <field name="email_from">${'info@topchoice.co.nz'}</field>
+            <field name="email_to">${object.partner_id.invoice_user_id.email}</field>
+            <field name="subject">Supplier Invoice Create: ${object.company_id.name} - ${object.amount_total} / ${today}</field>
+            <field name="model_id" ref="account_enhance.model_account_invoice"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>System Notice: Invoice draft: Company - ${object.partner_id.name} / Reference -${object.origin} has been created </p>
+                </br>
+                </br>
+                %if object.type == "out_invoice"
+                <p><a href= "https://erp.mactrends.com/?db=mactrends#id=${object.id}&view_type=form&model=account.invoice&menu_id=220&action=241" >Click here to confirm invoice</a></p>
+                %elif object.type == "out_refund"
+                <p><a href= "https://erp.mactrends.com/?db=mactrends#id=${object.id}&view_type=form&model=account.invoice&menu_id=222&action=243" >Click here to confirm invoice</a></p>
+                %elif object.type == "in_invoice"
+                <p><a href= "https://erp.mactrends.com/?db=mactrends#id=${object.id}&view_type=form&model=account.invoice&menu_id=221&action=242" >Click here to confirm invoice</a></p>
+                %elif object.type == "in_refund"
+                <p><a href= "https://erp.mactrends.com/?db=mactrends#id=${object.id}&view_type=form&model=account.invoice&menu_id=223&action=244" >Click here to confirm invoice</a></p>
+                %endif
+            ]]></field>
+        </record>
+
+        <!--Issue323-->
+        <record id="email_template_edi_supplier_invoice_due" model="email.template">
+            <field name="name">Invoice - Supplier Invoice Create</field>
+            <field name="email_from">${'info@topchoice.co.nz'}</field>
+            <field name="email_to">${object.partner_id.invoice_user_id.email}</field>
+            <field name="subject">URGENT! Supplier Invoice Create: ${object.company_id.name} - ${object.amount_total} / ${today}</field>
+            <field name="model_id" ref="account_enhance.model_account_invoice"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>System Notice: Invoice draft: Company - ${object.partner_id.name} / Reference -${object.origin} has been created </p>
+                </br>
+                <p>Payment Due Date: ${object.date_due}</p>
+                </br>
+                %if object.type == "out_invoice"
+                <p><a href= "https://erp.mactrends.com/?db=mactrends#id=${object.id}&view_type=form&model=account.invoice&menu_id=220&action=241" >Click here to confirm invoice</a></p>
+                %elif object.type == "out_refund"
+                <p><a href= "https://erp.mactrends.com/?db=mactrends#id=${object.id}&view_type=form&model=account.invoice&menu_id=222&action=243" >Click here to confirm invoice</a></p>
+                %elif object.type == "in_invoice"
+                <p><a href= "https://erp.mactrends.com/?db=mactrends#id=${object.id}&view_type=form&model=account.invoice&menu_id=221&action=242" >Click here to confirm invoice</a></p>
+                %elif object.type == "in_refund"
+                <p><a href= "https://erp.mactrends.com/?db=mactrends#id=${object.id}&view_type=form&model=account.invoice&menu_id=223&action=244" >Click here to confirm invoice</a></p>
+                %endif
+            ]]></field>
+        </record>
+
+    </data>
+</openerp>

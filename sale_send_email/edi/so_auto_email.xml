@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<openerp>
+  <data noupdate="0">
+  
+      <!--Template created for email notification to responsible user-->      
+        
+      <record id="email_template_so_wait_payment" model="email.template">
+          <field name="name">SO - Wait for your payment</field>
+          <field name="subject">NOREPLY) Notice: Wait for your payment:[${object.name}] ${object.company_id.name}</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="sale.model_sale_order"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">${object.partner_id.email}</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hi there,
+
+        <p>Just kindly remind you still have outstanding payment of ${object.residual}. </p>
+
+        <p>Once the payment is all cleared, we will arrange the earliest shipping for you.</p>
+
+        <p>Please remember to provide your delivery address and contact number if you have not done so.</p> 
+
+        <p>Please do not reply to this email directly, and feel free to email: info@topchoice.co.nz for further assistance.</p> 
+
+        <p>I look forward to hearing from you.</p>
+
+        <p>Thank you.</p>
+        <p>${object.company_id.name}</p>
+
+</div>
+            ]]></field>
+      </record>
+
+      <record id="email_template_stock_available" model="email.template">
+          <field name="name">SO - Stock is available</field>
+          <field name="subject">(NOREPLY) Notice: Stock is available and ready to dispatch:[${object.name}] ${object.company_id.name}</field>
+          <field name="email_from">support@topchoice.co.nz</field>
+          <field name="model_id" ref="sale.model_sale_order"/>
+          <field name="auto_delete" eval="False"/>
+          <field name="email_to">${object.partner_id.email}</field>
+          <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hi there,</p>
+
+    <p>Just kindly remind the product you purchased is arrived, and ready for dispatch.</p>
+
+    <p>Please make payment if you still have outstanding payment. Once the payment is all cleared, we will arrange the earliest shipping for you. You will receive a notification email with tracking number provided once order dispatched.</p>
+
+    <p>Please remember to provide your delivery address and contact number if you have not done so. </p>
+
+    <p>Please do not reply to this email directly, and feel free to email: info@topchoice.co.nz for further assistance.</p> 
+
+    <p>I look forward to hearing from you.</p>
+
+    <p>Thank you.</p>
+    <p>${object.company_id.name}</p>
+
+</div>
+            ]]></field>
+      </record>
+
+    </data>
+</openerp>

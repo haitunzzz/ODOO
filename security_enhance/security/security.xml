@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+
+    <record id="sale.group_sale_confirm" model="res.groups">
+        <field name="name">Confirm SO</field>
+        <field name="category_id" ref="base.module_category_sales_management"/>
+    </record>
+
+    <!-- Sales Reps 
+         from:ZhangXue-->
+    <record id="sale.group_sale_reps" model="res.groups">
+        <field name="name">Sales Reps</field>
+        <field name="category_id" ref="base.module_category_sales_management"/>
+    </record>
+
+    <record model="ir.ui.menu" id="base.menu_base_partner">
+        <field eval="[(4, ref('sale.group_sale_reps'))]" name="groups_id"/>
+    </record>
+
+    <record model="ir.ui.menu" id="base.menu_sales">
+        <field eval="[(6, 0, [ref('sale.group_sale_reps'), ref('base.group_sale_salesman'), ref('base.group_sale_manager')])]" name="groups_id"/>
+    </record>
+
+    <record model="ir.ui.menu" id="base.menu_partner_form">
+        <field eval="[(6, 0, [ref('sale.group_sale_reps'), ref('base.group_sale_salesman'), ref('base.group_sale_manager')])]" name="groups_id"/>
+    </record>
+
+    <record model="ir.ui.menu" id="sale.menu_sale_order">
+        <field eval="[(4, ref('sale.group_sale_reps'))]" name="groups_id"/>
+    </record>
+
+    <record model="ir.ui.menu" id="sale.menu_sale_quotations">
+        <field eval="[(6, 0, [ref('sale.group_sale_reps'), ref('base.group_sale_salesman'), ref('base.group_sale_manager')])]" name="groups_id"/>
+    </record>
+
+    <record model="ir.ui.menu" id="base.menu_product">
+        <field eval="[(6, 0, [ref('sale.group_sale_reps'), ref('base.group_sale_salesman'), ref('base.group_sale_manager')])]" name="groups_id"/>
+    </record>
+
+    <record model="ir.ui.menu" id="base.menu_base_config">
+        <field eval="[(6, 0, [ref('base.group_system')])]" name="groups_id"/>
+    </record>
+
+    <record model="ir.ui.menu" id="account_analytic_analysis.menu_action_account_analytic_overdue_all">
+        <field eval="[(6, 0, [ref('base.group_sale_salesman')])]" name="groups_id"/>
+    </record>
+
+    <!-- Issue 143
+         from:ZhangXue-->
+    <record id="sale_order_personal_rule_reps" model="ir.rule">
+        <field name="name">Personal Orders Reps</field>
+        <field ref="sale.model_sale_order" name="model_id"/>
+        <field name="domain_force">[('user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sale.group_sale_reps'))]"/>
+    </record>
+
+    <record id="crm_lead_personal_rule_reps" model="ir.rule">
+        <field name="name">Personal Leads Reps</field>
+        <field ref="crm.model_crm_lead" name="model_id"/>
+        <field name="domain_force">[('user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('sale.group_sale_reps'))]"/>
+    </record>
+
+    <record id="crm_lead_comp_rule" model="ir.rule">
+        <field name="name">Lead multi company rule</field>
+        <field model="ir.model" name="model_id" ref="crm.model_crm_lead"/>
+        <field eval="True" name="global"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+    </record>
+
+    <!-- HR
+         from:ZhangXue-->
+    <record id="hr_job_comp_rule" model="ir.rule">
+        <field name="name">Job multi company rule</field>
+        <field model="ir.model" name="model_id" ref="hr.model_hr_job"/>
+        <field eval="True" name="global"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+    </record>
+
+    <record id="hr_depa_comp_rule" model="ir.rule">
+        <field name="name">Department multi company rule</field>
+        <field model="ir.model" name="model_id" ref="hr.model_hr_department"/>
+        <field eval="True" name="global"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+    </record>
+
+    <record id="hr_pay_comp_rule" model="ir.rule">
+        <field name="name">Payroll Structure multi company rule</field>
+        <field model="ir.model" name="model_id" ref="hr_payroll.model_hr_payroll_structure"/>
+        <field eval="True" name="global"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+    </record>
+
+    <record id="hr_cont_comp_rule" model="ir.rule">
+        <field name="name">Contract multi company rule</field>
+        <field model="ir.model" name="model_id" ref="hr_contract.model_hr_contract"/>
+        <field eval="True" name="global"/>
+        <field name="domain_force">['|',('job_id.company_id','=',False),('job_id.company_id','child_of',[user.company_id.id])]</field>
+    </record>
+
+    <record id="hr_holi_comp_rule" model="ir.rule">
+        <field name="name">Holidays multi company rule</field>
+        <field model="ir.model" name="model_id" ref="hr_holidays.model_hr_holidays"/>
+        <field eval="True" name="global"/>
+        <field name="domain_force">['|',('employee_id.job_id.company_id','=',False),('employee_id.job_id.company_id','child_of',[user.company_id.id])]</field>
+    </record>
+
+    <record id="hr_expense_comp_rule" model="ir.rule">
+        <field name="name">Expense multi company rule</field>
+        <field model="ir.model" name="model_id" ref="hr_expense.model_hr_expense_expense"/>
+        <field eval="True" name="global"/>
+        <field name="domain_force">['|',('employee_id.job_id.company_id','=',False),('employee_id.job_id.company_id','child_of',[user.company_id.id])]</field>
+    </record>
+
+    <record id="hr_payslip_comp_rule" model="ir.rule">
+        <field name="name">Payslip multi company rule</field>
+        <field model="ir.model" name="model_id" ref="hr_payroll.model_hr_payslip"/>
+        <field eval="True" name="global"/>
+        <field name="domain_force">['|',('employee_id.job_id.company_id','=',False),('employee_id.job_id.company_id','child_of',[user.company_id.id])]</field>
+    </record>
+
+    <!-- Payment Method
+         from:ZhangXue-->
+    <record id="payment_method_comp_rule" model="ir.rule">
+        <field name="name">Sale Payment Method multi company rule</field>
+        <field model="ir.model" name="model_id" ref="sale_payment_method.model_payment_method"/>
+        <field eval="True" name="global"/>
+        <field name="domain_force">['|',('journal_id.company_id','=',False),('journal_id.company_id','child_of',[user.company_id.id])]</field>
+    </record>
+
+</data>
+</openerp>

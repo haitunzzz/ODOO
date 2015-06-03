@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    by wgwang svd.wang@gmail.com
+-->
+<openerp>  
+    <data>
+        <record model="ir.ui.view" id="view_product_brand_form">
+            <field name="name">product.brand.form</field>
+            <field name="model">product.brand</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="product.brand">
+                    <field name="name" select="1"/>
+                    <field name="logo" widget='image' />
+                    <field name="partner_id" select="1"/>
+                    <field name="headquarter"/>
+                    <separator colspan="4" string="Brand Story"/>
+                    <field colspan="4" name="story" nolabel="1"/>
+                    <separator colspan="4" string="Description"/>
+                    <field colspan="4" name="description" nolabel="1"/>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_product_brand_tree">
+            <field name="name">product.brand.tree</field>
+            <field name="model">product.brand</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="product.brand">
+                    <field name="reference" />
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="headquarter"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_product_brand">
+            <field name="name">Brand</field>
+            <field name="res_model">product.brand</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem name="Brand Management" id="menu_sale_product_brand" action="action_product_brand" groups="base.group_sale_manager" parent="base.menu_product"/>
+        <menuitem name="Brand Management" id="menu_stock_product_brand" action="action_product_brand" groups="stock.group_stock_manager" parent="stock.menu_stock_product"/>
+        <menuitem name="Brand Management" id="menu_purchase_product_brand" action="action_product_brand" groups="purchase.group_purchase_manager" parent="purchase.menu_procurement_management_product"/>
+    </data>
+</openerp>

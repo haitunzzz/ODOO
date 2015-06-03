@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_product_with_stock" model="ir.ui.view">
+            <field name="name">Product With Stock</field>
+            <field name="model">product.with.stock</field>
+            <field name="arch" type="xml">
+                <form string="Product Stock" version="7.0">
+                    <group col="4">
+                        <field name="category_id" domain="[('available_in_pos', '=', True),('available_in_po','=',True)]"/>
+                        <field name="product_brand_id" />
+                        <field name="product_model" />
+                        <field name="product_material" />
+                        <field name="product_color" />
+                        <field name="product_size_id" />
+                        <field name="product_ref" />
+                        <field name="warehouse_id" widget="selection"/>
+                        <field name="way_get" />
+                        <field name="befor_time" />
+                    </group>
+
+                    <footer>
+                        <button name="search_products" string="Confirm" type="object" class="oe_highlight"/>
+                    </footer>
+
+                </form>
+            </field>
+        </record>
+
+        <!-- keep by wgwang -->
+        <record id="action_view_products_with_stock" model="ir.actions.act_window">
+            <field name="name">Products with Stock</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.with.stock</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_product_with_stock"/>
+            <field name="target">current</field>
+        </record>
+
+        <menuitem name="Stock Products" 
+            id="menu_sale_product_with_stock" 
+            action="action_view_products_with_stock" 
+            parent="base.menu_product"/>
+        <menuitem name="Stock Products" 
+            id="menu_stock_product_with_stock" 
+            action="action_view_products_with_stock" 
+            parent="stock.menu_stock_product"/>
+        <menuitem name="Stock Products" 
+            id="menu_purchase_product_with_stock" 
+            action="action_view_products_with_stock" 
+            parent="purchase.menu_procurement_management_product"/>
+        <menuitem name="Stock Products" 
+            id="menu_pos_product_with_stock" 
+            action="action_view_products_with_stock" 
+            parent="point_of_sale.menu_point_of_sale_product"/>
+
+    </data>
+</openerp>
+

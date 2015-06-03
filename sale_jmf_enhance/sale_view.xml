@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+         <record id="view_order_form_jmf_inh" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="jmf.view_order_form_jmf"/>
+            <field name="arch" type="xml">
+                <field name="estimated_delivery_date" position="after">
+                    <field name="is_preorder"/>
+                    <field name="claim_type"/>
+                    <!--field name="if_sq_notify"/>
+                    <field name="if_prepay_notify"/>
+                    <field name="if_con_notify"/-->
+                    <field name="is_createpq"/>
+                    <field name="if_inner_partner"/>
+                </field>
+                <button name="action_button_confirm" states="draft"  position="replace">
+                    <field name="if_validated" invisible="1"/>
+                    <button name="action_button_validate" attrs="{'invisible': ['|',('if_validated','=', True),('state','not in',('draft','sent'))]}" string="Validate Sale" class="oe_highlight" type="object" groups="base.group_user"/>
+                    <button name="action_button_unvalidate" attrs="{'invisible': ['|',('if_validated','=', False),('state','not in',('draft','sent'))]}" string="Back to Quotations" class="oe_highlight" type="object" groups="base.group_user"/>
+                    <button name="action_button_confirm" states="draft" string="Confirm Sale" type="object" groups="sale.group_sale_confirm"/>
+                </button>
+                <button name="action_button_confirm" states="sent"  position="replace">
+                    <button name="action_button_confirm" states="sent" string="Confirm Sale" class="oe_highlight" type="object" groups="sale.group_sale_confirm"/>
+                </button>
+                <button name="cancel" position="after">
+                    <button name="action_button_obsoleted" states="draft,sent" string="Obsoleted" type="object" groups="base.group_sale_salesman"/>
+                </button>
+
+
+                <xpath expr="//sheet/h1" position="after">
+                	<div class="oe_right" >
+                        <field name="tradevine_list_url" widget="urlzx" string="View Trademe Listing"  attrs="{'invisible': [('tradevine_list_url','=',False)]}" />
+                        <field name="ebay_url" widget="urlzx" string="View Ebay Listing"  attrs="{'invisible': [('ebay_url','=',False)]}" />
+                	</div>
+                </xpath>
+
+                <button name="action_quotation_send" states="draft" position="replace">
+                        <button name="action_quotation_send" string="Send by Email" type="object" class="oe_highlight" groups="base.group_sale_salesman"/>
+                </button>
+                <button name="action_quotation_send" states="sent" position="replace">
+                </button>
+                <button name="print_quotation" states="draft" position="replace">
+                        <button name="print_quotation" string="Print" type="object" states="draft" class="oe_highlight" groups="base.group_sale_salesman"/>
+                </button>
+                <button name="print_quotation" states="sent" position="replace">
+                        <button name="print_quotation" string="Print" type="object" states="sent" groups="base.group_sale_salesman"/>
+                </button>
+                <field name="date_order" position="replace">
+                    <field name="date_order" invisible="1"/>
+                    <field name="create_date" string="Date"/>
+                </field>
+            </field>        
+	    </record>
+
+         <record id="view_order_form_jmf_inh2" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="sale_margin.sale_margin_sale_order"/>
+            <field name="arch" type="xml">
+                <field name="margin" position="replace">
+                    <field name="margin" widget='monetary' options="{'currency_field': 'currency_id'}" groups="base.group_sale_manager"/>
+                    <field name="refund"/>
+                </field>
+            </field>        
+	    </record>
+
+         <record id="view_order_form_jmf_inh3" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="sale_stock.view_order_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_view_delivery']" position="replace">
+                    <button name="action_view_delivery" string="View Delivery Order" type="object" class="oe_highlight"
+                        attrs="{'invisible': ['|',('picking_ids','=',False),('picking_ids','=',[])]}" groups="base.group_user"/>
+                </xpath>
+                <field name="shipped" position="replace">
+                    <field name="shipped" invisible="1"/>
+                    <field name="shipped_int"/>
+                    <field name="date_done_int"  attrs="{'invisible': [('shipped_int','=', False)]}"/>
+                    <field name="shipped_do"/>
+                    <field name="carrier_id" attrs="{'invisible': [('shipped_do','=', False)]}"/>
+                    <field name="carrier_tracking_ref" attrs="{'invisible': [('shipped_do','=', False)]}"/>
+                    <field name="number_of_packages" attrs="{'invisible': [('shipped_do','=', False)]}"/>
+                </field>
+            </field>        
+	    </record>
+
+         <record id="view_order_form_jmf_inh4" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="sale_payment_method.sale_order_view_form"/>
+            <field name="arch" type="xml">
+                <button name="action_view_payments" position="replace">
+                    <button name="action_view_payments"
+                        string="View Automatic Payment"
+                        type="object" class="oe_highlight"
+                        attrs="{'invisible': [('payment_exists', '=', False)]}"
+                        groups="base.group_sale_salesman"/>
+                </button>
+            </field>        
+	    </record>
+
+         <!--record id="view_order_form_jmf_inh3" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/form//field[@name='purchase_price']" position="replace">
+                    <field name="purchase_price" groups="base.group_sale_salesman"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree//field[@name='purchase_price']" position="replace">
+                    <field name="purchase_price" groups="base.group_sale_salesman"/>
+                </xpath>
+            </field>        
+	    </record-->
+
+
+        <record id="view_order_tree_jmf_inh" model="ir.ui.view">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <!--tree string="Quotation" fonts="bold:message_unread==True" colors="grey:state=='cancel';blue:state in ('waiting_date','manual');red:state in ('invoice_except','shipping_except')"-->
+                <tree string="Quotation" position="attributes">
+                    <attribute name="colors">#993333:color &gt; 10; #ff6600: color &gt; 7 and color &lt;= 10 </attribute>
+                </tree>
+                <field name="state" position="after">
+                    <field name="is_preorder"/>
+                    <field name="color"/>
+                 </field>
+                <field name="partner_id" position="after">
+                    <field name="client_order_ref"/>
+                 </field>
+                <field name="date_order" position="replace">
+                    <field name="date_order" invisible="1"/>
+                    <field name="create_date" string="Date"/>
+                </field>
+            </field>        
+	 </record>
+
+
+        <record id="view_order_tree_jmf_inh_so" model="ir.ui.view">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="jmf.view_order_tree_jmf"/>
+            <field name="arch" type="xml">
+		        <field name="shipping_method" position="replace">
+                    <field name="is_preorder"/>
+                 </field>
+                <field name="amount_total" position="after">
+                    <field name="residual"/>
+                    <field name="refund"/>
+                </field>
+            </field>        
+	 </record>
+
+        <record id="view_sales_order_filter_inh" model="ir.ui.view">
+            <field name="name">sale.order.list.select</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <filter string="Quotations" position="replace">
+                    <filter icon="terp-document-new" string="Draft SQ" name="draft" domain="[('state','in',('draft','sent')),('if_validated','=',False)]" help="Sales Order that haven't yet been validated and confirmed"/>
+                    <filter icon="terp-document-new" string="Validated SQ" name="vdraft" domain="[('state','in',('draft','sent')),('if_validated','=',True)]" help="Validated Sales Order that haven't yet been confirmed"/>
+                    <filter icon="terp-document-new" string="Unpaid SQ (excl Prepaid)" name="unpaiddraft" domain="[('residual','>',0.001),('is_preorder','=',False)]" help="Validated Sales Order that haven't yet been confirmed"/>
+                    <filter icon="terp-check" string="Refunded" name="refunded" domain="[('refund','>', 0)]"/>
+                    <filter icon="terp-check" string="Unrefunded" name="unrefunded" domain="[('refund','=', 0)]"/>
+                    <filter icon="terp-check" string="Unrefunded or Partial Refunded" name="unfullrefunded" domain="['|',('refund','=', 0),('unfullrefund','!=',0)]"/>
+                </filter>
+            </field>
+        </record>
+
+        <record id="sale.action_orders" model="ir.actions.act_window">
+            <field name="name">Sales Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="inherit_id" ref="sale.action_orders"/>
+            <field name="context" eval="{'search_default_unfullrefunded':1}"/>
+        </record>
+
+
+
+
+        <record id="view_order_line_tree_inh" model="ir.ui.view">
+            <field name="name">sale.order.line.tree</field>
+            <field name="model">sale.order.line</field>
+            <field name="inherit_id" ref="sale.view_order_line_tree"/>
+            <field name="arch" type="xml">
+                <field name="order_id" position="after">
+                    <field name="date_order"/>
+                </field>
+                <field name="price_subtotal" position="replace">
+                    <field name="amount_total"/>
+                </field>
+                <field name="invoiced" position="after">
+                    <field name="residual"/>
+                </field>
+            </field>
+        </record>
+
+        <act_window
+            context="{'default_product_id': active_id}"
+            id="action_order_product_tree"
+            name="Sales Orders"
+            res_model="sale.order"
+            src_model="product.product"
+            view_id="sale.view_quotation_tree"
+            groups="base.group_sale_salesman"/>
+
+        <!--record id="action_quotations_validated" model="ir.actions.act_window">
+            <field name="name">Validated Quotations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="sale.view_quotation_tree"/>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field name="context">{}</field>
+            <field name="domain">[('state','in',('draft','sent','cancel')),('if_validated','=',True)]</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a quotation, the first step of a new sale.
+              </p><p>
+                OpenERP will help you handle efficiently the complete sale flow:
+                from the quotation to the sales order, the
+                delivery, the invoicing and the payment collection.
+              </p><p>
+                The social feature helps you organize discussions on each sales
+                order, and allow your customers to keep track of the evolution
+                of the sales order.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_sale_quotations_validated"
+        action="action_quotations_validated" parent="base.menu_sales"
+        sequence="4"/>
+
+        <record id="sale.action_quotations" model="ir.actions.act_window">
+            <field name="name">Quotations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="sale.view_quotation_tree"/>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field name="context">{}</field>
+            <field name="domain">[('state','in',('draft','sent','cancel')),('if_validated','=',False)]</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a quotation, the first step of a new sale.
+              </p><p>
+                OpenERP will help you handle efficiently the complete sale flow:
+                from the quotation to the sales order, the
+                delivery, the invoicing and the payment collection.
+              </p><p>
+                The social feature helps you organize discussions on each sales
+                order, and allow your customers to keep track of the evolution
+                of the sales order.
+              </p>
+            </field>
+        </record-->
+
+        <!--record id="mactrends_sales_commission.action_so_commission_tree" model="ir.actions.act_window">
+            <field name="name">Confirm Commissions</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="mactrends_sales_commission.view_order_tree"/>
+            <field name="domain">[('shipped','=',True),('user_id','!=',False)]</field>
+            <field name="context">{'search_default_confirm_commission':'confirm'}</field>
+        </record-->
+        
+        <act_window name="Send Auto Templates"
+                res_model="mail.compose.message"
+                src_model="sale.order"
+                view_mode="form"
+                multi="True"
+                target="new"
+                key2="client_action_multi"
+                id="action_sale_order_mail"
+                context="{'default_composition_mode': 'mass_mail'}"/>
+
+        <record id="sale.action_quotations" model="ir.actions.act_window">
+            <field name="name">Quotations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="sale.view_quotation_tree"/>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field name="context">{}</field>
+            <field name="domain">[('state','in',('draft','sent','cancel','obsoleted'))]</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a quotation, the first step of a new sale.
+              </p><p>
+                OpenERP will help you handle efficiently the complete sale flow:
+                from the quotation to the sales order, the
+                delivery, the invoicing and the payment collection.
+              </p><p>
+                The social feature helps you organize discussions on each sales
+                order, and allow your customers to keep track of the evolution
+                of the sales order.
+              </p>
+            </field>
+        </record>
+
+    </data>
+</openerp>

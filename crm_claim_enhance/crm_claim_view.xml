@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+
+      <record model="ir.ui.view" id="crm_case_claims_form_view_inh">
+          <field name="name">CRM - Claims Form</field>
+          <field name="model">crm.claim</field>
+          <field name="inherit_id" ref="crm_claim.crm_case_claims_form_view"/>
+          <field name="arch" type="xml">
+              <button name="case_close" position="replace">
+                  <button name="case_close" string="CS Settle" type="object" class="oe_highlight" groups="base.group_user" attrs="{'invisible': [('state','in',('cancel','done'))]}"/>
+                  <button name="case_close_final" string="Root Responsible Settle" type="object" class="oe_highlight" groups="base.group_user" attrs="{'invisible': ['|',('if_final','=',True),('state','in',('cancel','done'))]}"/>
+                      <field name="if_final" invisible="1"/>
+              </button>
+
+              <button name="case_cancel" position="replace">
+                    <button name="action_create_order" string="Create Draft SO for Parts" type="object"
+                            states="draft,open,pending" groups="base.group_user"/>
+                    <!--button name="action_comfirm_byqc" string="Confirm by QC Manager" type="object" class="oe_highlight"
+                    groups="base.group_user"  attrs="{'invisible': ['|','|',('type','!=','Warranty'),('qc_manager','=','null'),('state','=','done')]}"/
+                      <field name="qc_manager" invisible="1"/>
+                    -->
+                    <button name="action_create_refund_invoice" string="Create Refund" type="object"
+                            groups="base.group_user"/>
+                    <!-- Issue349 -->
+                    <button name="action_create_refund_picking" string="Create DO Return" type="object"
+                            groups="base.group_user"/>
+              </button>
+              <field name="type_action" position="replace">
+                  <field name="pre_action" nolabel="1"/>
+              </field>
+              <field name="resolution" position="replace">
+              </field>
+              <field name="sale_id" position="after">
+                  <field name="warranty_id"/>
+              </field>
+              <!--      Issue 279     -->
+              <field name="product_purchase" position="replace">
+                    <field name="product_purchase" string="Product Description"/>
+                    <field name="product_purchase_ids" widget="many2many_tags"/>
+              </field>
+              <!--      Issue 287   
+              <separator string="Claim/Action Description" position="before">
+              </separator>
+                  <separator colspan="2" string="Resolution Actions" />
+                  <field name="type_action" />
+                  <field name="reso_actions" attrs="{'invisible': [('type_action','!=','correction')]}"/>
+                  <field name="resolution" colspan="2"/>
+              <field name="write_date" position="after">
+              </field>
+                  <group string="Customer Service Resolutions">
+                  </group>
+                      <label for="fixing_cost_desc"/>
+                      <div>
+                      </div>
+                  <group string="Warranty Serial #">
+                  </group>
+                        -->
+              <separator  string="Root Causes" position="before">
+                  <separator colspan="2" string="Customer Service Correction Actions" />
+                  <field name="co_action" colspan="2" nolabel="1"/>
+                  <separator colspan="2" string="Faulty / Damaged Product Code" />
+                  <field name="parts_code" widget="many2many_tags" colspan="2" />
+                  <field name="parts_cost" colspan="2" />
+                  <separator colspan="2" string="Warranty Serial #" />
+                  <field name="fixing_cost"/>
+                  <field name="fixing_cost_desc"/>
+                  <separator colspan="2" string="Root Responsible Dept / Person" />
+                  <field name="department_ids" colspan="1" widget="many2many_tags"/>
+                  <field name="resp_ids" colspan="1" widget="many2many_tags"/>
+              </separator>
+              <field name="wc_image4" position="after">
+                    <field name="youtube_url_wc" />
+              </field>
+              <field name="fd_image4" position="after">
+                    <field name="youtube_url_fd" />
+              </field>
+          </field>
+  </record>
+
+    <record model="ir.ui.view" id="crm_claim_enhance_tree_view">
+      <field name="name">CRM - Claims Tree</field>
+      <field name="model">crm.claim</field>
+      <field name="inherit_id" ref="crm_claim.crm_case_claims_tree_view"/>
+      <field name="arch" type="xml">
+          <field name="full_name"  position="replace"/>
+          <field name="date_action_next" position="replace"/>
+          <field name="action_next" position="replace"/>
+          <field name="state" position="replace">
+              <field name="state" invisible='1'/>
+          </field>
+          <field name="priority" position="replace">
+              <field name="priority" invisible='1'/>
+              <field name="date_closed"/>
+          </field>
+          <!--      Issue 216     -->
+          <!--field name="name" position="after">
+              <field name="product_purchase"/>
+          </field-->
+          <field name="partner_phone" position="replace"/>
+          <field name="categ_id" position="replace" />
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="crm.action_crm_tag_kanban_view_oppor11">
+        <field name="sequence" eval="3"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="crm.crm_case_kanban_view_leads"/>
+        <field name="act_window_id" ref="crm.crm_case_category_act_oppor11"/>
+    </record>
+
+
+    <!-- Opportunities Form View -->
+    <record model="ir.ui.view" id="crm_case_form_view_oppor_inh">
+        <field name="name">Opportunities</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+        <field name="arch" type="xml">
+            <field name="opt_out" position="after">
+                <field name="company_id"
+                    groups="base.group_multi_company"
+                    widget="selection"/>
+            </field>
+            <field name="phone" position="after">
+                <field name="mobile"/>
+                <field name="fax"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="crm_case_form_view_oppor_inh">
+        <field name="name">Opportunities</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+        <field name="arch" type="xml">
+          <field name="partner_id"  position="after">
+              <field name="company_id" string="Belong to"/>
+          </field>
+        </field>
+    </record>
+
+    <menuitem name="Opportunities" id="menu_crm_opportunities" parent="base.menu_sales" action="crm.crm_case_category_act_oppor11" sequence="3" />
+  </data>
+</openerp>

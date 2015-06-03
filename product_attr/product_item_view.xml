@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    by wgwang svd.wang@gmail.com
+    http://wgwang.github.com
+-->
+
+<openerp>  
+    <data>
+        <record model="ir.ui.view" id="view_product_item_form">
+            <field name="name">product.item.form</field>
+            <field name="model">product.item</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="product.item">
+                    <group colspan="2" col="2">
+                        <separator string="General" colspan="2"/>
+                        <field name="iid" readonly='1'/>
+                        <field name="product_id"/>
+                        <field name="uuid"/>
+                        <field name="auuid"/>
+                        <field name="status"/>
+                        <field name="stock_location_id" />
+                    </group>
+                    <group colspan="2" col="2">
+                        <separator string="Auxiliary" colspan="2"/>
+                        <field name="purchase_order_id" />
+                        <field name="sale_order_id"/>
+                        <field name="pos_order_id"/>
+                        <field name="create_date"/>
+                        <field name="write_date" />
+                        <field name="in_stock_date" />
+                        <field name="out_stock_date" />
+                    </group>
+                    <group colspan="2" col="2">
+                        <separator string="Price" colspan="2"/>
+                        <field name="price_unit" />
+                        <field name="in_currency" />
+                        <field name="price_sale"/>
+                        <field name="out_currency" />
+                    </group>
+                    <group colspan="2" col="2">
+                        <separator string="Others" colspan="2"/>
+                        <field name="new_type"/>
+                        <field name="size"/>
+                        <field name="company_id"/>
+                        <field name="note"/>
+                    </group>
+                    <group colspan="4" col="1">
+                        <separator string="Sale History Records" colspan="2"/>
+                        <field name="sale_id" colspan="4"/>
+                        <field name="pos_id" colspan="4"/>
+                        <field name="stock_move_ids" colspan="4"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_product_item_tree">
+            <field name="name">product.item.tree</field>
+            <field name="model">product.item</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="product.item">
+                    <field name="iid" readonly='1'/>
+                    <field name="uuid" />
+                    <field name="auuid" />
+                    <field name="size" invisible='1'/>
+                    <field name="status"/>
+                    <field name="write_date" invisible='1'/>
+                    <field name="create_date"/>
+                    <field name="price_unit"/>
+                    <field name="price_sale"/>
+                    <field name="purchase_order_id"/>
+                    <field name="sale_order_id"/>
+                    <field name="pos_order_id"/>
+                    <field name="out_stock_date" />
+                    <field name="stock_location_id"/>
+                    <field name="note" invisible='1'/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_product_item_tree_formenu">
+            <field name="name">product.item.menutree</field>
+            <field name="model">product.item</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="product.item">
+                    <field name="product_id" />
+                    <field name="iid" />
+                    <field name="uuid" />
+                    <field name="auuid" />
+                    <field name="status"/>
+                    <field name="in_stock_date" />
+                    <field name="write_date" invisible='1'/>
+                    <field name="create_date" invisible='1'/>
+                    <field name="price_unit" sum='unit_total'/>
+                    <field name="price_sale" sum='sale_total'/>
+                    <field name="purchase_order_id"/>
+                    <field name="sale_order_id"/>
+                    <field name="pos_order_id"/>
+                    <field name="out_stock_date" />
+                    <field name="stock_location_id"/>
+                    <field name="note" invisible='1'/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="product_item_search_form_view" model="ir.ui.view">
+            <field name="name">product.item.search.form</field>
+            <field name="model">product.item</field>
+            <field name="arch" type="xml">
+                <search string="Product Items">
+                    <field name="iid" string="Item id" filter_domain="[('iid','=',self)]"/>
+                    <filter string='Product' icon="terp-stock_symbol-selection" domain="[]" context="{'group_by' : 'product_id'}"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_product_items">
+            <field name="name">Product Items</field>
+            <field name="res_model">product.item</field>
+            <field name="view_id" ref="view_product_item_tree_formenu"/>
+        </record>
+        
+        <menuitem name="Product Items" id="menu_sale_product_items" action="action_product_items" groups="base.group_user" parent="base.menu_product"/>
+        <menuitem name="Product Items" id="menu_stock_product_items" action="action_product_items" groups="base.group_user" parent="stock.menu_stock_product"/>
+        <menuitem name="Product Items" id="menu_purchase_product_items" action="action_product_items" groups="base.group_user" parent="purchase.menu_procurement_management_product"/>
+
+    </data>
+</openerp>

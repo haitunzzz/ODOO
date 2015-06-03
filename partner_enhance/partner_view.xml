@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+        <!-- Supplier -->
+        <record id="view_partner_tree_supplier" model="ir.ui.view">
+            <field name="name">res.partner.tree</field>
+            <field name="model">res.partner</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Contacts">
+                    <field name="name"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="if_autopay"/>
+                </tree>
+            </field>
+	    </record>
+
+        <record id="action_partner_tree_view3" model="ir.actions.act_window.view">
+            <!--field name="sequence" eval="1"/-->
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_partner_tree_supplier"/>
+            <field name="act_window_id" ref="base.action_partner_supplier_form"/>
+        </record>
+
+        <!-- Issue294 
+             -->
+        <record id="view_partner_form_inh_supplier" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="supplier" postion="after">
+                    <field name="manufacturer" attrs="{'invisible': [('supplier','=', False)]}"/>
+                    <field name="lead" attrs="{'invisible': [('manufacturer','=', False)]}"/>
+                </field>
+            </field>
+	    </record>
+
+    </data>
+</openerp>

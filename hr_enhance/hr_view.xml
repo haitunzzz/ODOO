@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <record id="view_hr_job_form_inh" model="ir.ui.view">
+            <field name="name">hr.job.form</field>
+            <field name="model">hr.job</field>
+            <field name="inherit_id" ref="hr.view_hr_job_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                        <!--div>
+                    <label for="kpi_rate"/>
+                    <field name="kpi_rate"/>
+                        </div-->
+                    <group string="Staff KPI Targets">
+                        <field name="lines" nolabel="1">
+                            <tree string="Staff KPI Targets" editable="bottom">
+                                <field name="kpicateg_id"  on_change="onchange_kpicateg_id(kpicateg_id, context)"/>
+                                <field name="name"/>
+                                <field name="period"/>
+                                <field name="unit"/>
+                                <field name="kpi_rate"/>
+                                <field name="target"/>
+                                <field name="actual"/>
+                                <field name="rate"/>
+                                <field name="company_id"/>
+                            </tree>
+                        </field>
+                    </group>
+                        <div>
+                            <label for="kpi"/>
+                            <field name="kpi"/>
+                        </div>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Issue #290 -->
+        <record id="view_employee_form_inh" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <group name="active_group" position="after">
+                    <group string="Days of Service">
+                        <field name="days_service"/>
+                        <field name="date_entry"/>
+                    </group>
+                </group>
+                <page string="HR Settings" position="inside">
+                    <group string="Staff KPI Targets">
+                        <field name="lines" nolabel="1">
+                            <tree string="Staff KPI Targets" editable="bottom">
+                                <field name="kpicateg_id"  on_change="onchange_kpicateg_id(kpicateg_id, context)"/>
+                                <field name="name"/>
+                                <field name="period"/>
+                                <field name="unit"/>
+                                <field name="kpi_rate"/>
+                                <field name="target"/>
+                                <field name="actual"/>
+                                <field name="rate"/>
+                                <field name="company_id"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="Potential Positions">
+                        <field name="pjob_id" nolabel="1"/>
+                    </group>
+                </page>
+                <field name="job_id" position="replace">
+                    <field name="job_id" options='{"no_open": True}' domain="[('state','!=','old')]" context="{'form_view_ref': 'hr.view_hr_job_employee_form'}" on_change="onchange_job_id(job_id, context)"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Issue #290 -->
+        <record model="ir.ui.view" id="view_hr_evaluation_form_inh">
+            <field name="name">hr_evaluation.evaluation.form</field>
+            <field name="model">hr_evaluation.evaluation</field>
+            <field name="inherit_id" ref="hr_evaluation.view_hr_evaluation_form"/>
+            <field name="arch" type="xml">
+                <group string="Appraisal Forms" position="before">
+                    <group string="Staff KPI Targets">
+                        <field name="lines" nolabel="1">
+                            <tree string="Staff KPI Targets" editable="bottom">
+                                <field name="kpicateg_id"  on_change="onchange_kpicateg_id(kpicateg_id, context)"/>
+                                <field name="name"/>
+                                <field name="period"/>
+                                <field name="unit"/>
+                                <field name="kpi_rate"/>
+                                <field name="target"/>
+                                <field name="actual"/>
+                                <field name="rate"/>
+                                <field name="company_id"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="Potential Positions">
+                        <field name="pjob_id" nolabel="1"/>
+                    </group>
+                </group>
+            </field>
+        </record>
+
+        <record id="view_kpicateg_form" model="ir.ui.view">
+            <field name="name">kpi.category</field>
+            <field name="model">kpi.category</field>
+            <field name="arch" type="xml">
+                <form string="KPI Category" version="7.0">
+                    <label for="name" class="oe_edit_only"/>
+                    <h1><field name="name"/></h1>
+                    <group name="kpicateg">
+                        <group>
+                            <field name="period"/>
+                            <field name="kpi_rate"/>
+                        </group>
+                        <group>
+                            <field name="unit"/>
+                            <field name="company_id"/>
+                        </group>
+                    </group>
+                    <group string="Description">
+                        <field name="ref" nolabel="1"/>
+                    </group>
+                </form>
+           </field>
+        </record>
+        
+        <record id="view_kpicateg_tree" model="ir.ui.view">
+            <field name="name">kpi.category</field>
+            <field name="model">kpi.category</field>
+            <field name="arch" type="xml">
+                <tree string="KPI Category">
+                    <field name="name"/>
+                    <field name="period"/>
+                    <field name="unit"/>
+                    <field name="ref"/>
+                    <field name="kpi_rate"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_kpicateg_form" model="ir.actions.act_window">
+            <field name="name">KPI Category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kpi.category</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_kpicateg_tree"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a new kpi.category.
+              </p>
+            </field>
+        </record>
+
+        <menuitem parent="hr.menu_hr_configuration" id="menu_kpi_category_tree"
+            action="action_kpicateg_form" sequence="16"/>
+
+    </data>
+</openerp>
